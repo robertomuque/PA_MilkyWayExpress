@@ -10,5 +10,5 @@ package Cubos;
  * @author inose_000
  */
 public class Cubo_Amarelo extends Cubo{
-    
+    //aa
 }
