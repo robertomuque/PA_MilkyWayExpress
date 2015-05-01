@@ -15,8 +15,8 @@ import java.util.List;
  * @author inose_000
  */
 public class Ship_Card {
-    List<Cubo> forca = new ArrayList<>();
-    List<Cubo> carga = new ArrayList<>();
-    List<Cubo> aquisicoes = new ArrayList<>();
-    List<Coin> fundos = new ArrayList<>();
+    private List<Cubo> forca = new ArrayList<>();
+    private List<Cubo> carga = new ArrayList<>();
+    private List<Cubo> aquisicoes = new ArrayList<>();
+    private List<Coin> fundos = new ArrayList<>();
 }

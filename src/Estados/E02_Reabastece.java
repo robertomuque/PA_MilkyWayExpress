@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Cubos;
+package Estados;
 
 /**
  *
  * @author inose_000
  */
-public class Cubo_Amarelo extends Cubo{
+public class E02_Reabastece extends Estado{
+    
 }

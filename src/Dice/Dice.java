@@ -10,6 +10,6 @@ package Dice;
  * @author inose_000
  */
 public class Dice {
-    private int getNumero(){return 0;}
-    private String getCor(){return null;}
+    public int getNumero(){return 0;}
+    public String getCor(){return null;}
 }

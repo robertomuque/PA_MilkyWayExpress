@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Planetas;
+package Estados;
 
 /**
  *
  * @author inose_000
  */
-public class Planeta_Pirata {
+public class E06_Trade extends Estado{
     
 }

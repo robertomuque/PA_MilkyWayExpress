@@ -11,5 +11,5 @@ package Cubos;
  */
 public class Cubo{
     Cubo(){}
-    String getInfo(){return null;}
+    public String getInfo(){return null;}
 }

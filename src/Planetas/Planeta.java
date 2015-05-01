@@ -6,6 +6,7 @@
 package Planetas;
 
 import Cubos.*;
+import Cartas.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,8 @@ import java.util.List;
  *
  * @author inose_000
  */
-public class Planeta {
-    List<Cubo> bens = new ArrayList<>();
+public class Planeta extends Carta{
+    Cubo getCubos(){
+        return null;
+    }
 }

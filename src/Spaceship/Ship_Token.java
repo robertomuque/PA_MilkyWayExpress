@@ -12,5 +12,5 @@ import Jogador.Jogador;
  * @author inose_000
  */
 public class Ship_Token {
-    Jogador jogador;
+    private Jogador jogador;
 }

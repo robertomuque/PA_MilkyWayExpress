@@ -9,6 +9,6 @@ package Dice;
  *
  * @author inose_000
  */
-public class Dado_Colorido {
+public class Dado_Colorido extends Dice{
     
 }
