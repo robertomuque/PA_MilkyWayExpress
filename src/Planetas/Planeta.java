@@ -15,7 +15,7 @@ import java.util.List;
  * @author inose_000
  */
 public class Planeta extends Carta{
-    Cubo getCubos(){
+    Cubo verificaCubos(){
         return null;
     }
 }

@@ -6,7 +6,9 @@
 package Planetas;
 
 import Cubos.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,6 +18,7 @@ import java.util.Map;
 public class Gethen extends Planeta{
     String nome;
     Map<Cubo,Integer> precario = new HashMap<>();
+    List<Cubo> cubos = new ArrayList<>();
     
     
         Gethen(){
@@ -27,7 +30,7 @@ public class Gethen extends Planeta{
     }
         
     @Override
-    Cubo getCubos(){
+    Cubo verificaCubos(){
         return null;
     }
 }
