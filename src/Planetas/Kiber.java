@@ -18,7 +18,7 @@ public class Kiber extends Planeta{
     Map<Cubo,Integer> precario = new HashMap<>();
     
     Kiber(){
-        nome = "Gethen";
+        nome = "Kiber";
         precario.put(CuboAzul, 1);
         precario.put(CuboAmarelo, 3);
         precario.put(CuboVermelho, 2);
