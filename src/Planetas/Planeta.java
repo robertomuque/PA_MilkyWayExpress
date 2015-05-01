@@ -5,7 +5,7 @@
  */
 package Planetas;
 
-import Cubos.Cubo;
+import Cubos.*;
 import java.util.ArrayList;
 import java.util.List;
 
