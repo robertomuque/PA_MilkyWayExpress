@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Coins;
+package Cubos;
 
 /**
  *
  * @author inose_000
  */
-public class Coin {
+public class Coin extends Cubo{
     
 }

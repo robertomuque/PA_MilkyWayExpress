@@ -5,6 +5,7 @@
  */
 package Spaceship;
 
+import Cartas.Carta;
 import Coins.*;
 import Cubos.*;
 import java.util.ArrayList;
@@ -14,9 +15,9 @@ import java.util.List;
  *
  * @author inose_000
  */
-public class Ship_Card {
+public class Ship_Card extends Carta{
     private List<Cubo> forca = new ArrayList<>();
     private List<Cubo> carga = new ArrayList<>();
     private List<Cubo> aquisicoes = new ArrayList<>();
-    private List<Coin> fundos = new ArrayList<>();
+    private List<Cubo> fundos = new ArrayList<>();
 }

@@ -15,7 +15,7 @@ import java.util.Map;
  *
  * @author inose_000
  */
-public class Striterax extends Planeta{
+public class Striterax extends PlanetaPirata{
     String nome;
     Map<Cubo,Integer> precario = new HashMap<>();
     List<Cubo> cubos = new ArrayList<>();
