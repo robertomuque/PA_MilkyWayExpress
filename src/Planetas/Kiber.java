@@ -19,9 +19,9 @@ public class Kiber extends Planeta{
     
     Kiber(){
         nome = "Kiber";
-        precario.put(CuboAzul, 1);
-        precario.put(CuboAmarelo, 3);
-        precario.put(CuboVermelho, 2);
-        precario.put(CuboPreto, 3);
+        precario.put(new CuboAzul(), 3);
+        precario.put(new CuboAmarelo(), 1);
+        precario.put(new CuboVermelho(), 2);
+        precario.put(new CuboPreto(), 3);
     }
 }

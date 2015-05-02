@@ -15,22 +15,17 @@ import java.util.Map;
  *
  * @author inose_000
  */
-public class Gethen extends Planeta{
+public class Arrakis extends Planeta{
     String nome;
     Map<Cubo,Integer> precario = new HashMap<>();
     List<Cubo> cubos = new ArrayList<>();
     
     
-        Gethen(){
-        nome = "Gethen";
-        precario.put(new CuboAzul(), 1);
-        precario.put(new CuboAmarelo(), 3);
-        precario.put(new CuboVermelho(), 2);
+        Arrakis(){
+        nome = "Arrakis";
+        precario.put(new CuboAzul(), 2);
+        precario.put(new CuboAmarelo(), 1);
+        precario.put(new CuboVermelho(), 3);
         precario.put(new CuboPreto(), 3);
-    }
-        
-    @Override
-    Cubo verificaCubos(){
-        return null;
     }
 }
