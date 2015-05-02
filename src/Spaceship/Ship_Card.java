@@ -6,7 +6,6 @@
 package Spaceship;
 
 import Cartas.Carta;
-import Coins.*;
 import Cubos.*;
 import java.util.ArrayList;
 import java.util.List;

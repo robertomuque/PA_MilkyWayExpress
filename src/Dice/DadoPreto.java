@@ -9,6 +9,8 @@ package Dice;
  *
  * @author inose_000
  */
-public class Dado_Preto extends Dice{
-    
+public class DadoPreto extends Dice{
+    public int lancarDado(){
+        return (int)Math.random()*(6)+1;
+    }
 }
