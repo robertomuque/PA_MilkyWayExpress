@@ -21,7 +21,7 @@ public class Asperta extends PlanetaPirata{
     List<Cubo> cubos = new ArrayList<>();
     
     
-        Asperta(){
+        public Asperta(){
         nome = "Asperta";
         precario.put(new CuboAzul(), 3);
     }

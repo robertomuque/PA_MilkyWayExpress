@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class DadoColorido extends Dice{
     Map<Integer,String> cor = new HashMap<>();
-    DadoColorido(){
+    public DadoColorido(){
         cor.put(0,"Vermelho");
         cor.put(1,"Azul");
         cor.put(2,"Amarelo");

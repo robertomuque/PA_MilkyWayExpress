@@ -21,7 +21,7 @@ public class Striterax extends PlanetaPirata{
     List<Cubo> cubos = new ArrayList<>();
     
     
-        Striterax(){
+        public Striterax(){
         nome = "Striterax";
         precario.put(new CuboVermelho(), 3);
     }

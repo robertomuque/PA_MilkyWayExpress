@@ -17,7 +17,7 @@ public class Reverie extends Planeta{
     String nome;
     Map<Cubo,Integer> precario = new HashMap<>();
     
-    Reverie(){
+    public Reverie(){
         nome = "Reverie";
         precario.put(new CuboAzul(), 1);
         precario.put(new CuboAmarelo(), 2);

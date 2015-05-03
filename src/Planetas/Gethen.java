@@ -21,7 +21,7 @@ public class Gethen extends Planeta{
     List<Cubo> cubos = new ArrayList<>();
     
     
-        Gethen(){
+        public Gethen(){
         nome = "Gethen";
         precario.put(new CuboAzul(), 1);
         precario.put(new CuboAmarelo(), 3);

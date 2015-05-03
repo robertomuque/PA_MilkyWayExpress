@@ -5,16 +5,34 @@
  */
 package Jogador;
 
-import Spaceship.Ship_Token;
+import Cubos.*;
+import Spaceship.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author inose_000
  */
 public class Jogador {
-    Ship_Token tokenship;
+    ShipToken tokenship;
+    ShipCard nave;
+    List<Cubo> fundos = new ArrayList<>();
+    List<Cubo> comida = new ArrayList<>();
+    List<Cubo> agua = new ArrayList<>();
+    List<Cubo> medicamentos = new ArrayList<>();
+    List<Cubo> ilegalgoods = new ArrayList<>();
     
     public Jogador(){
-        tokenship = new Ship_Token(this);
+        tokenship = new ShipToken(this);
+        nave = new ShipCard(this);
     }
+    
+    void fazCompra(int x){
+        for(int i=0;i<x;i++)
+        {
+            fundos.remove(fundos.size()-1);
+        }
+    }
+    
 }

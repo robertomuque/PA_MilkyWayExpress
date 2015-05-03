@@ -17,7 +17,7 @@ public class Lamarckia extends Planeta{
     String nome;
     Map<Cubo,Integer> precario = new HashMap<>();
     
-    Lamarckia(){
+    public Lamarckia(){
         nome = "Lamarckia";
         precario.put(new CuboAzul(), 1);
         precario.put(new CuboAmarelo(), 2);

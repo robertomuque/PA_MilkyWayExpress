@@ -5,10 +5,12 @@
  */
 package Planetas;
 
+import Cartas.Carta;
+
 /**
  *
  * @author inose_000
  */
-public class PlanetaPirata {
+public class PlanetaPirata extends Carta{
     
 }

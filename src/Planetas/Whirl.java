@@ -21,7 +21,7 @@ public class Whirl extends PlanetaPirata{
     List<Cubo> cubos = new ArrayList<>();
     
     
-        Whirl(){
+        public Whirl(){
         nome = "Whirl";
         precario.put(new CuboAmarelo(), 3);
     }

@@ -17,7 +17,7 @@ public class Tiamat extends Planeta{
     String nome;
     Map<Cubo,Integer> precario = new HashMap<>();
     
-    Tiamat(){
+    public Tiamat(){
         nome = "Tiamat";
         precario.put(new CuboAzul(), 2);
         precario.put(new CuboAmarelo(), 3);

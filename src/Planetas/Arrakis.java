@@ -21,7 +21,7 @@ public class Arrakis extends Planeta{
     List<Cubo> cubos = new ArrayList<>();
     
     
-        Arrakis(){
+        public Arrakis(){
         nome = "Arrakis";
         precario.put(new CuboAzul(), 2);
         precario.put(new CuboAmarelo(), 1);
