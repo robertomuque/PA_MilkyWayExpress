@@ -5,10 +5,16 @@
  */
 package Jogador;
 
+import Spaceship.Ship_Token;
+
 /**
  *
  * @author inose_000
  */
 public class Jogador {
+    Ship_Token tokenship;
     
+    public Jogador(){
+        tokenship = new Ship_Token(this);
+    }
 }
