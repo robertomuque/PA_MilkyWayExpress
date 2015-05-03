@@ -9,6 +9,6 @@ package Cartas;
  *
  * @author inose_000
  */
-public class Empty_Space extends Carta{
+public class WormHole extends Carta{
     
 }
