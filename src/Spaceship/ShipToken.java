@@ -11,6 +11,11 @@ import Jogador.Jogador;
  *
  * @author inose_000
  */
-public class Ship_Token {
+public class ShipToken {
+    int x;
+    int y;
     private Jogador jogador;
+    public ShipToken(Jogador jog){
+        jogador = jog;
+    }
 }
