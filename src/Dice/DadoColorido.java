@@ -20,7 +20,7 @@ public class DadoColorido extends Dice{
         cor.put(2,"Amarelo");
         cor.put(3,"Preto");
         cor.put(4,"Branco");
-        cor.put(4,"Branco");
+        cor.put(5,"Branco");
     }
     
     public String lancarDado(){

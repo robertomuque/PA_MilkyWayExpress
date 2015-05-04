@@ -61,11 +61,25 @@ public class Tabuleiro {
         mesa.get(0).setPos(xx, yy);
         for(int i=0;i<x;i++)
         {
-            int posicao = (int)(Math.random()*baralho.size())+1;
-            mesa.add(baralho.get(posicao));
-            baralho.remove(posicao);
+            int posicao = (int)Math.random()*(baralho.size()-1);
+            Carta escolha = baralho.get(posicao);
+            mesa.add(escolha);
+            baralho.remove(escolha);
+            
+            int var = (int)Math.random()*2;
+            if(var==0){
+                xx++;
+                mesa.get(mesa.indexOf(escolha)).setPos(xx, yy);
+            }
+            else
+            {
+                yy++;
+                mesa.get(mesa.indexOf(escolha)).setPos(xx, yy);
+            }
         }
         mesa.add(new WormHole());
+        mesa.get(mesa.size()-1).setPos(xx++, yy);
     }
+    
     
 }
