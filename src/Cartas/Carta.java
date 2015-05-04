@@ -12,6 +12,7 @@ package Cartas;
 public class Carta{
     protected int posx;
     protected int posy;
+    boolean visible;
     public void setPos(int xx,int yy){
         posx = xx;
         posy = yy;
@@ -22,4 +23,12 @@ public class Carta{
     public int getY(){
         return posy;
     }
+    
+   public void setVisible(){
+       visible = true;
+   }
+   
+   public boolean getVisible(){
+       return visible;
+   }
 }
