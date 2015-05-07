@@ -9,6 +9,6 @@ package Estados;
  *
  * @author inose_000
  */
-public class E07_Compra extends Estado{
+public class E01_Movimento extends Estado{
     
 }
