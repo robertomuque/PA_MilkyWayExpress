@@ -5,10 +5,14 @@
  */
 package Estados;
 
+import Jogo.Jogo;
+
 /**
  *
  * @author inose_000
  */
 public class E02_Trade extends Estado{
-    
+    public E02_Trade(Jogo jog){
+        super(jog);
+    }
 }

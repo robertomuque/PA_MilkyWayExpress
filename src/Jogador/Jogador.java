@@ -28,11 +28,15 @@ public class Jogador {
         nave = new ShipCard(this);
     }
     
-    void fazCompra(int x){
+    public void fazCompra(int x){
         for(int i=0;i<x;i++)
         {
             fundos.remove(fundos.size()-1);
         }
+    }
+    
+    public int getFundos(){
+        return fundos.size();
     }
     
 }

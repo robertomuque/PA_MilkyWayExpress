@@ -10,19 +10,8 @@ package Cartas;
  * @author inose_000
  */
 public class Carta{
-    protected int posx;
-    protected int posy;
-    boolean visible;
-    public void setPos(int xx,int yy){
-        posx = xx;
-        posy = yy;
-    }
-    public int getX(){
-        return posx;
-    }
-    public int getY(){
-        return posy;
-    }
+    
+   boolean visible;
     
    public void setVisible(){
        visible = true;

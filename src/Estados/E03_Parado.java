@@ -5,10 +5,15 @@
  */
 package Estados;
 
+import Jogo.Jogo;
+
 /**
  *
  * @author inose_000
  */
 public class E03_Parado extends Estado{
+    public E03_Parado(Jogo jog){
+        super(jog);
+    }
     
 }

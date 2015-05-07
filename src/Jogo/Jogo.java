@@ -19,9 +19,11 @@ import java.util.List;
  *
  * @author inose_000
  */
+
 public class Jogo {
     Jogador jogador1;
     Jogador jogador2;
+    Jogador jogadoractivo;
     Carta [][] matrizcartas = new Carta[25][25];
     int [][] matrizinterface = new int[25][25];
     List<Carta> baralho = new ArrayList<>();
@@ -50,42 +52,52 @@ public class Jogo {
         baralho.add(new Whirl());
     }
     
-    public void setJogadores(Jogador j1, Jogador j2){
-        jogador1 = j1;
-        jogador2 = j2;
+    public void addJogador(Jogador jog){
+        if(jogador1 == null){
+            jogador1 = new Jogador();
+        }else if(jogador2 == null){
+            jogador2 = new Jogador();
+        }
+    }
+    
+    public void removeJogador(){
+        if(jogador2!=null){
+            jogador2 = null;
+        }
     }
     
     public void setTabuleiro(){
         int xx = 0;
         int yy = 0;
         int x = baralho.size();
+        
         mesa.add(new WormHole());
-        mesa.get(0).setPos(xx, yy);
+        
         matrizinterface[xx][yy] = 0;
+        
         for(int i=0;i<x;i++)
         {
-            int posicao = (int)Math.random()*(baralho.size()-1);
-            Carta escolha = baralho.get(posicao);
-            mesa.add(escolha);
-            baralho.remove(escolha);
             
-            int var = (int)Math.random()*2;
-            if(var==0){
-                xx++;
-                mesa.get(mesa.indexOf(escolha)).setPos(xx, yy);
-            }
-            else
-            {
-                yy++;
-                mesa.get(mesa.indexOf(escolha)).setPos(xx, yy);
-            }
         }
         mesa.add(new WormHole());
-        mesa.get(mesa.size()-1).setPos(xx++, yy);
         matrizinterface[xx][yy] = 0;
     }
     
     int preencheMat(Carta cart){
         return 0;
+    }
+    
+    public void moverNave(int x, int y){  }
+    
+    public int getPosX(){
+        return 0;
+    }
+    
+    public int getPosY(){
+        return 0;
+    }
+    
+    public Jogador getJogadorActivo(){
+        return jogadoractivo;
     }
 }
