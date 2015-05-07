@@ -1,4 +1,4 @@
-package Tabuleiro;
+package Jogo;
 
 
 import Cartas.*;
@@ -19,16 +19,18 @@ import java.util.List;
  *
  * @author inose_000
  */
-public class Tabuleiro {
+public class Jogo {
     Jogador jogador1;
     Jogador jogador2;
+    Carta [][] matrizcartas = new Carta[25][25];
+    int [][] matrizinterface = new int[25][25];
     List<Carta> baralho = new ArrayList<>();
     List<Carta> mesa = new ArrayList<>();
     Dice dadocor = new DadoColorido();
     Dice dadopreto = new DadoPreto();
     List<Cubo> banco = new ArrayList<>();
     
-    Tabuleiro(){
+    public Jogo(){
         for(int i=0;i<2;i++)
         {
             baralho.add(new WormHole());
@@ -59,6 +61,7 @@ public class Tabuleiro {
         int x = baralho.size();
         mesa.add(new WormHole());
         mesa.get(0).setPos(xx, yy);
+        matrizinterface[xx][yy] = 0;
         for(int i=0;i<x;i++)
         {
             int posicao = (int)Math.random()*(baralho.size()-1);
@@ -79,7 +82,10 @@ public class Tabuleiro {
         }
         mesa.add(new WormHole());
         mesa.get(mesa.size()-1).setPos(xx++, yy);
+        matrizinterface[xx][yy] = 0;
     }
     
-    
+    int preencheMat(Carta cart){
+        return 0;
+    }
 }
