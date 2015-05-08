@@ -4,23 +4,12 @@ package Jogo;
 import Ataque.AtaquePirata;
 import Cartas.*;
 import Cubos.*;
-import Dice.*;
 import Jogador.Jogador;
 import Planetas.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author inose_000
- */
 
 public class Jogo {
     
@@ -30,12 +19,8 @@ public class Jogo {
     List<Carta> baralho = new ArrayList<>();
     List<Cubo> banco = new ArrayList<>();
     Carta [][] mapa = new Carta[10][10];
-    Carta [][] matrizcartas = new Carta[25][25];
-    int [][] matrizinterface = new int[25][25];
     List<AtaquePirata> ataque = new ArrayList<>();
     Random aletaorio = new Random();
-    
-    
     
     public Jogo(){
         for(int i=0;i<2;i++)
@@ -103,19 +88,19 @@ public class Jogo {
                     pY[i] = 0;
                     break;
                 case 1: // Canto superior direito
-                    mapa[8][0] = new WormHole();
-                    pX[i] = 8;
+                    mapa[9][0] = new WormHole();
+                    pX[i] = 9;
                     pY[i] = 0;
                     break;
                 case 2: // Canto inferior esquerdo
-                    mapa[0][8] = new WormHole();
+                    mapa[0][9] = new WormHole();
                     pX[i] = 0;
-                    pY[i] = 8;
+                    pY[i] = 9;
                     break;
                 case 3: // Canto inferior direito
-                    mapa[8][8] = new WormHole();
-                    pX[i] = 8;
-                    pY[i] = 8;
+                    mapa[9][9] = new WormHole();
+                    pX[i] = 9;
+                    pY[i] = 9;
                     break;
             }
         }
@@ -142,8 +127,8 @@ public class Jogo {
         // Colocacao das restantes cartas do baralho
         while(baralho.size() > 0){
             conta = 0;
-            int sorteX = 1 + aletaorio.nextInt(6);  // Sorteia posicao em X (1-6)
-            int sorteY = 1 + aletaorio.nextInt(6);  // Sorteia posicao em Y (1-6)
+            int sorteX = 1 + aletaorio.nextInt(7);  // Sorteia posicao em X (1-6)
+            int sorteY = 1 + aletaorio.nextInt(7);  // Sorteia posicao em Y (1-6)
             for(int varX = -1; varX <= 1; varX++){
                 for(int varY = -1; varY <= 1; varY++){
                     if(varX != 0 && varY != 0 && mapa[sorteX + varX][sorteY + varY] == null){
