@@ -5,6 +5,7 @@
  */
 package Estados;
 
+import Cubos.Cubo;
 import Jogo.Jogo;
 
 /**
@@ -15,4 +16,25 @@ public class E02_Trade extends Estado{
     public E02_Trade(Jogo jog){
         super(jog);
     }
+        
+    @Override
+    public Estado upgradeForca(){
+        return this;
+    }
+    
+    @Override
+    public Estado upgradeDefesa(){
+        return this;
+    }
+    
+    @Override
+    public Estado comprar(Cubo material){
+        return this;
+    }
+    
+    @Override
+    public Estado retomarMovimento(){
+        jog.resetAtaques();
+        return new E01_Movimento(jog);}
+    
 }
