@@ -11,7 +11,7 @@ import Jogo.*;
  * @author inose_000
  */
 public class ITexto {
-    int [][] matrizcartas = new int [25][25];
+    int [][] matrizcartas = new int [10][10];
     Jogo jogo = new Jogo();
     
     
