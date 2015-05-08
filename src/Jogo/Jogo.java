@@ -76,11 +76,11 @@ public class Jogo {
         int xx = 0;
         int yy = 0;
         int tamanho = baralho.size();
-        int auxCanto=-1, canto1, canto2;
+        int auxCanto=-1;
         int []pX = new int[2];
         int []pY = new int[2];
-        int difX, difY;
-        int nextX, nextY;
+        int nextX=0, nextY=0;
+        int canto1, canto2, difX, difY, sorte, conta;
         
         // Escolhe cantos dos WormHoles
         canto1 = aletaorio.nextInt(4);
@@ -134,18 +134,29 @@ public class Jogo {
                 nextX = ligacaoX;
                 nextY = ligacaoY + (1 * (ligacaoY / Math.abs(ligacaoY)));
             }
-            int sorte = aletaorio.nextInt(baralho.size());
-            //mapa[nextX][nextY] = baralho[sorte];
-            // Eliminar baralho[sorte];
+            sorte = aletaorio.nextInt(baralho.size());
+            mapa[nextX][nextY] = baralho.get(sorte);
+            baralho.remove(sorte);
         }
         
         // Colocacao das restantes cartas do baralho
-        
-        
-        
-        
-        
-
+        while(baralho.size() > 0){
+            conta = 0;
+            int sorteX = 1 + aletaorio.nextInt(6);  // Sorteia posicao em X (1-6)
+            int sorteY = 1 + aletaorio.nextInt(6);  // Sorteia posicao em Y (1-6)
+            for(int varX = -1; varX <= 1; varX++){
+                for(int varY = -1; varY <= 1; varY++){
+                    if(varX != 0 && varY != 0 && mapa[sorteX + varX][sorteY + varY] == null){
+                        conta++;    // Conta numero de cartas adjacentes a posicao atual
+                    }
+                }
+            }
+            if(conta > 0){                                     // Se qualquer celula circundante tiver carta
+                sorte = aletaorio.nextInt(baralho.size());     // Assim so coloca cartas adjacentes a outras cartas antes colocadas
+                mapa[sorteX][sorteY] = baralho.get(sorte);
+                baralho.remove(sorte);
+            }
+        }
     }
     
     int preencheMat(Carta cart){
