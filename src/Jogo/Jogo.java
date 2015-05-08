@@ -182,4 +182,8 @@ public class Jogo {
     public void resetAtaques(){
         ataque.clear();
     }
+    
+    public void finalizarCompras(){
+        
+    }
 }

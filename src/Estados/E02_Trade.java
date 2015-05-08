@@ -16,14 +16,18 @@ public class E02_Trade extends Estado{
     public E02_Trade(Jogo jog){
         super(jog);
     }
-        
+       
     @Override
     public Estado upgradeForca(){
+        int x = jog.getJogadorActivo().getNave().upgradeForca();
+        jog.getJogadorActivo().fazCompra(x);
         return this;
     }
     
     @Override
-    public Estado upgradeDefesa(){
+    public Estado upgradeCarga(){
+        int x = jog.getJogadorActivo().getNave().upgradeCarga();
+        jog.getJogadorActivo().fazCompra(x);
         return this;
     }
     
@@ -32,9 +36,14 @@ public class E02_Trade extends Estado{
         return this;
     }
     
+    @Override 
+    public Estado vender(Cubo material){
+        return this;
+    }
     @Override
     public Estado retomarMovimento(){
         jog.resetAtaques();
+        
         return new E01_Movimento(jog);}
     
 }

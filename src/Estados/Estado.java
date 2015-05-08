@@ -29,10 +29,12 @@ abstract class Estado {
     
     public Estado upgradeForca(){return this;}
     
-    public Estado upgradeDefesa(){return this;}
+    public Estado upgradeCarga(){return this;}
     
     public Estado comprar(Cubo material){return this;}
     
+    public Estado vender(Cubo material){return this;}
+            
     public Estado retomarMovimento(){return this;}
     
     public void fecharJogo(){fim = true;}

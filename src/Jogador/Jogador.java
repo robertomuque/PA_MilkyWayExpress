@@ -15,17 +15,17 @@ import java.util.List;
  * @author inose_000
  */
 public class Jogador {
-    ShipToken tokenship;
+    ShipToken token;
     ShipCard nave;
     List<Cubo> fundos = new ArrayList<>();
-    List<Cubo> comida = new ArrayList<>();
-    List<Cubo> agua = new ArrayList<>();
-    List<Cubo> medicamentos = new ArrayList<>();
-    List<Cubo> ilegalgoods = new ArrayList<>();
     
     public Jogador(){
-        tokenship = new ShipToken(this);
+        token = new ShipToken(this);
         nave = new ShipCard(this);
+    }
+    
+    public ShipCard getNave(){
+        return nave;
     }
     
     public void fazCompra(int x){
@@ -38,5 +38,10 @@ public class Jogador {
     public int getFundos(){
         return fundos.size();
     }
+    
+    public void finalizarCompras(){
+        
+    }
+    
     
 }
