@@ -5,6 +5,7 @@
  */
 package Estados;
 
+import Ataque.AtaquePirata;
 import Cartas.*;
 import Jogador.*;
 import Jogo.*;
@@ -35,10 +36,19 @@ public class E01_Movimento extends Estado{
     
     @Override
     public Estado pararNave(Carta posicao){
-        if(posicao instanceof Planeta || posicao instanceof PlanetaPirata){
+        if(posicao instanceof Planeta){
             return new E02_Trade(jog);
-        }else{
+        }else if(posicao instanceof PlanetaPirata){
+            
+            AtaquePirata ataque1 = jog.getAtaque1();
+            AtaquePirata ataque2 = jog.getAtaque2();
+            jog.getJogadorActivo().fazCompra(ataque1.getResgate());
+            jog.getJogadorActivo().fazCompra(ataque2.getResgate());
             return new E03_Parado(jog);
+            
+        }
+        else{
+            return this;
         }
     }
 }

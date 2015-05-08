@@ -1,6 +1,7 @@
 package Jogo;
 
 
+import Ataque.AtaquePirata;
 import Cartas.*;
 import Cubos.*;
 import Dice.*;
@@ -8,6 +9,7 @@ import Jogador.Jogador;
 import Planetas.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,16 +23,19 @@ import java.util.List;
  */
 
 public class Jogo {
+    
     Jogador jogador1;
     Jogador jogador2;
     Jogador jogadoractivo;
+    List<Carta> baralho = new ArrayList<>();
+    List<Cubo> banco = new ArrayList<>();
+    Carta [][] mapa = new Carta[10][10];
     Carta [][] matrizcartas = new Carta[25][25];
     int [][] matrizinterface = new int[25][25];
-    List<Carta> baralho = new ArrayList<>();
-    List<Carta> mesa = new ArrayList<>();
-    Dice dadocor = new DadoColorido();
-    Dice dadopreto = new DadoPreto();
-    List<Cubo> banco = new ArrayList<>();
+    List<AtaquePirata> ataque = new ArrayList<>();
+    Random aletaorio = new Random();
+    
+    
     
     public Jogo(){
         for(int i=0;i<2;i++)
@@ -66,21 +71,81 @@ public class Jogo {
         }
     }
     
-    public void setTabuleiro(){
+    public void setMapa(){  // Criação aleatória do mapa
+        // Dados
         int xx = 0;
         int yy = 0;
-        int x = baralho.size();
+        int tamanho = baralho.size();
+        int auxCanto=-1, canto1, canto2;
+        int []pX = new int[2];
+        int []pY = new int[2];
+        int difX, difY;
+        int nextX, nextY;
         
-        mesa.add(new WormHole());
+        // Escolhe cantos dos WormHoles
+        canto1 = aletaorio.nextInt(4);
+        do{
+            canto2 = aletaorio.nextInt(4);
+        }while(canto2 == canto1);
         
-        matrizinterface[xx][yy] = 0;
-        
-        for(int i=0;i<x;i++)
-        {
-            
+        // Colocacao dos WormHoles
+        for(int i = 0; i < 2; i++){
+            if(i == 0){
+                auxCanto = canto1;
+            }
+            if(i == 1){
+                auxCanto = canto2;
+            }
+            switch(auxCanto){   // Adiciona o WormHole e guarda as suas coordenadas (xx,yy)
+                case 0: // Canto superior esquerdo
+                    mapa[0][0] = new WormHole();
+                    pX[i] = 0;
+                    pY[i] = 0;
+                    break;
+                case 1: // Canto superior direito
+                    mapa[8][0] = new WormHole();
+                    pX[i] = 8;
+                    pY[i] = 0;
+                    break;
+                case 2: // Canto inferior esquerdo
+                    mapa[0][8] = new WormHole();
+                    pX[i] = 0;
+                    pY[i] = 8;
+                    break;
+                case 3: // Canto inferior direito
+                    mapa[8][8] = new WormHole();
+                    pX[i] = 8;
+                    pY[i] = 8;
+                    break;
+            }
         }
-        mesa.add(new WormHole());
-        matrizinterface[xx][yy] = 0;
+        
+        // Ligacao entre WormHoles (1 -> 2)
+        int ligacaoX = pX[0];
+        int ligacaoY = pY[0];
+        while((ligacaoX != pX[1] && ligacaoY != pX[1]) && baralho.size() > 0){
+            difX = pX[1] - ligacaoX;
+            difY = pY[1] - ligacaoY;
+            if(Math.abs(difX) > Math.abs(difY) && difX != 0){
+                nextX = ligacaoX + (1 * (ligacaoX / Math.abs(ligacaoX)));
+                nextY = ligacaoY;
+            }
+            else if(Math.abs(difX) < Math.abs(difY) && difY != 0){
+                nextX = ligacaoX;
+                nextY = ligacaoY + (1 * (ligacaoY / Math.abs(ligacaoY)));
+            }
+            int sorte = aletaorio.nextInt(baralho.size());
+            //mapa[nextX][nextY] = baralho[sorte];
+            // Eliminar baralho[sorte];
+        }
+        
+        // Colocacao das restantes cartas do baralho
+        
+        
+        
+        
+        
+
     }
     
     int preencheMat(Carta cart){
@@ -99,5 +164,22 @@ public class Jogo {
     
     public Jogador getJogadorActivo(){
         return jogadoractivo;
+    }
+    
+    public void sofreAtaque(){
+        ataque.add(new AtaquePirata());
+        ataque.add(new AtaquePirata());
+    }
+    
+    public AtaquePirata getAtaque1(){
+        return ataque.get(0);
+    }
+    
+    public AtaquePirata getAtaque2(){
+        return ataque.get(1);
+    }
+    
+    public void resetAtaques(){
+        ataque.clear();
     }
 }
