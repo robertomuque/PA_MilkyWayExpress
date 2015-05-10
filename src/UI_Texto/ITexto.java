@@ -1,15 +1,10 @@
 
 package UI_Texto;
 
+
 import Jogo.*;
 import Cartas.*;
 import Planetas.*;
-
-
-
-
-
-
 
 
 public class ITexto {
@@ -21,37 +16,51 @@ public class ITexto {
         mapData = jogo.getMapa();
     }
     
+    
     public void printMapa(){
         int i, j;
         int dimX = 10;
         int dimY = 10;
-        char letra;
+        char letra = ' ';
+        char [][] charMap = new char [10][10];
         
+        // Cria array de caracteres 10x10 do mapa
         for(i = 0; i < dimX; i++){
             for(j = 0; j < dimY; j++){
-                if(mapData[i][j] == null){
-                    letra = ' ';
+                if(!mapData[i][j].getVisible()){
+                   letra = '?';     // Carta ainda nao descoberta
+                }
+                else if(mapData[i][j] == null){
+                    letra = ' ';    // Espaço fora do mapa
                 }
                 else if(mapData[i][j] instanceof EmptySpace){
-                    letra = 'E';
+                    letra = 'E';    // EmptySpace
                 }
                 else if(mapData[i][j] instanceof WormHole){
-                    letra = 'W';
+                    letra = 'W';    // WormHole
                 }
                 else if(mapData[i][j] instanceof Planeta){
-                    letra = 'P';
+                    letra = 'P';    // Planeta
                 }
                 else if(mapData[i][j] instanceof PlanetaPirata){
-                    letra = 'K';
+                    letra = 'K';    // Planeta Pirata
                 }
-                
+                charMap[i][j] = letra;
             }
         }
         
-        
-        
+        // Imprime mapa
+        for(i = 0; i < dimX; i++){
+            for(j = 0; j < dimY; j++){
+                
+                // Adicionar mudanca de cor para a casa em que o jogador tem o token da nave?
+                // O token da nave pode ser '1' e '2', para o jogador 1 e jogador 2, respetivamente ...
+                
+                System.out.print(charMap[i][j]);
+                // Faz mudança de linha de 10 em 10 caracteres ?!
+            }
+        }        
     }
-    
     
     
     void adicionaJogador(){
