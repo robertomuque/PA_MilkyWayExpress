@@ -18,6 +18,7 @@ public class Jogador {
     ShipToken token;
     ShipCard nave;
     List<Cubo> fundos = new ArrayList<>();
+    List<Cubo> compras = new ArrayList<>();
     
     public Jogador(){
         token = new ShipToken(this);
@@ -35,13 +36,23 @@ public class Jogador {
         }
     }
     
+    public void compraMaterial(Cubo material){
+        compras.add(material);
+    }
+    
     public int getFundos(){
         return fundos.size();
     }
     
     public void finalizarCompras(){
-        
+        while(!compras.isEmpty()){
+            nave.adicionarCompra(compras.get(0));
+            compras.remove(compras.get(0));
+        }
     }
     
+    public ShipToken getToken(){
+        return token;
+    }
     
 }

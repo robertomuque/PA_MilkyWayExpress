@@ -182,4 +182,8 @@ public class Jogo {
     public void finalizarCompras(){
         
     }
+    
+    public Carta[][] getMapa(){
+        return mapa;
+    }
 }

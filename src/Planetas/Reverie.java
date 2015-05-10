@@ -14,14 +14,11 @@ import java.util.Map;
  * @author inose_000
  */
 public class Reverie extends Planeta{
-    String nome;
-    Map<Cubo,Integer> precario = new HashMap<>();
-    
     public Reverie(){
         nome = "Reverie";
-        precario.put(new CuboAzul(), 1);
-        precario.put(new CuboAmarelo(), 2);
-        precario.put(new CuboVermelho(), 3);
-        precario.put(new CuboPreto(), 3);
+        precario.put(new Agua(), 1);
+        precario.put(new Comida(), 2);
+        precario.put(new Medicamento(), 3);
+        precario.put(new Ilegal(), 3);
     }
 }

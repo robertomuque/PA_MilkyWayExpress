@@ -5,12 +5,17 @@
  */
 package Planetas;
 
-import Cartas.Carta;
+import Cartas.*;
+import Cubos.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author inose_000
  */
 public class PlanetaPirata extends Carta{
-    
+    String nome;
+    Map<Cubo,Integer> precario = new HashMap<>();
+    Cubo [] mercado = new Cubo[1];
 }

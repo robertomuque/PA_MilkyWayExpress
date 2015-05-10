@@ -8,11 +8,13 @@ import Planetas.*;
 
 
 public class ITexto {
-    Jogo jogo = new Jogo();
+    Jogo jogo;
     Carta [][] mapData;
     int [][] matrizcartas = new int [10][10];
     
     public ITexto(){
+        jogo = new Jogo();
+        jogo.setMapa();
         mapData = jogo.getMapa();
     }
     

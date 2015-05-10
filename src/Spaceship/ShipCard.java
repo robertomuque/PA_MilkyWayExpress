@@ -8,8 +8,6 @@ package Spaceship;
 import Cartas.Carta;
 import Cubos.*;
 import Jogador.Jogador;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -18,19 +16,21 @@ import java.util.List;
 
 public class ShipCard extends Carta{
     Jogador jogador;
-    private List<Cubo> forca = new ArrayList<>();
-    private List<Cubo> carga = new ArrayList<>();
-    List<Cubo> comida = new ArrayList<>();
-    List<Cubo> agua = new ArrayList<>();
-    List<Cubo> medicamentos = new ArrayList<>();
-    List<Cubo> ilegalgoods = new ArrayList<>();
+    Cubo [] forca = new Cubo[5];
+    Cubo [] carga = new Cubo[3];
     
     public ShipCard(Jogador jog){
         jogador = jog;
-        forca.add(new CuboCinza());
-        forca.add(new CuboCinza());
-        forca.add(new CuboCinza());
-        carga.add(new CuboCinza());
+        forca[0] = null;
+        forca[1] = null;
+        forca[2] = null;
+        forca[3] = new CuboCinza();
+        forca[4] = new CuboCinza();
+        carga[0] = null;
+        carga[2] = new CuboCinza();
+        forca[2] = new CuboCinza();
+
+        
     }
     
     Jogador getJogador(){
@@ -38,42 +38,33 @@ public class ShipCard extends Carta{
     }
     
     public int upgradeForca(){
-        if(forca.size()<5){
-            forca.add(new CuboCinza());
-            return forca.size();
+        for(int i=0;i<5;i++){
+            if(forca[i] instanceof CuboCinza){
+                forca[i] = null;
+                return i+1;
+            }
         }
-        else
-        {
-            return 0;
-        }
+        return 0;
         
     }
     
     public int upgradeCarga(){
-        if(carga.size()<3)
-        {
-            carga.add(new CuboCinza());
-            return carga.size();
+        for(int i=0;i<3;i++){
+            if(carga[i] instanceof CuboCinza){
+                carga[i] = null;
+                return i+1;
+            }
         }
-        else
-        {
-           return 0; 
-        }
+        return 0;
     }
     
     public void adicionarCompra(Cubo material){
-        if(material instanceof CuboAmarelo){
-            
+        for(int i=0;i<carga.length;i++){
+           if(carga[i] == null){
+               carga[i] = material;
+               break;
+           } 
         }
-        else if(material instanceof CuboAzul){
-            
-        }
-        else if(material instanceof CuboVermelho){
-            
-        }
-        else if(material instanceof CuboPreto){
-            
-        }
+        
     }
-    
 }

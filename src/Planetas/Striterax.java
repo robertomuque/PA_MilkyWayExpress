@@ -15,14 +15,10 @@ import java.util.Map;
  *
  * @author inose_000
  */
-public class Striterax extends PlanetaPirata{
-    String nome;
-    Map<Cubo,Integer> precario = new HashMap<>();
-    List<Cubo> cubos = new ArrayList<>();
-    
+public class Striterax extends PlanetaPirata{    
     
         public Striterax(){
         nome = "Striterax";
-        precario.put(new CuboVermelho(), 3);
+        precario.put(new Medicamento(), 3);
     }
 }

@@ -16,13 +16,8 @@ import java.util.Map;
  * @author inose_000
  */
 public class Whirl extends PlanetaPirata{
-    String nome;
-    Map<Cubo,Integer> precario = new HashMap<>();
-    List<Cubo> cubos = new ArrayList<>();
-    
-    
         public Whirl(){
         nome = "Whirl";
-        precario.put(new CuboAmarelo(), 3);
+        precario.put(new Comida(), 3);
     }
 }

@@ -14,14 +14,11 @@ import java.util.Map;
  * @author inose_000
  */
 public class Kiber extends Planeta{
-    String nome;
-    Map<Cubo,Integer> precario = new HashMap<>();
-    
     public Kiber(){
         nome = "Kiber";
-        precario.put(new CuboAzul(), 3);
-        precario.put(new CuboAmarelo(), 1);
-        precario.put(new CuboVermelho(), 2);
-        precario.put(new CuboPreto(), 3);
+        precario.put(new Agua(), 3);
+        precario.put(new Comida(), 1);
+        precario.put(new Medicamento(), 2);
+        precario.put(new Ilegal(), 3);
     }
 }

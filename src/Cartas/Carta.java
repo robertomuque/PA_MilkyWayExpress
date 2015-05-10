@@ -11,7 +11,7 @@ package Cartas;
  */
 public class Carta{
     
-   boolean visible;
+   boolean visible = false;
     
    public void setVisible(){
        visible = true;

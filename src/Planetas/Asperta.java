@@ -15,14 +15,10 @@ import java.util.Map;
  *
  * @author inose_000
  */
-public class Asperta extends PlanetaPirata{
-    String nome;
-    Map<Cubo,Integer> precario = new HashMap<>();
-    List<Cubo> cubos = new ArrayList<>();
-    
+public class Asperta extends PlanetaPirata{    
     
         public Asperta(){
         nome = "Asperta";
-        precario.put(new CuboAzul(), 3);
+        precario.put(new Agua(), 3);
     }
 }

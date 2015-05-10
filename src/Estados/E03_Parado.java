@@ -16,4 +16,8 @@ public class E03_Parado extends Estado{
         super(jog);
     }
     
+    @Override
+    public Estado retomarMovimento(){
+        return new E01_Movimento(jog);}
+    
 }

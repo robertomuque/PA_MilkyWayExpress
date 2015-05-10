@@ -5,6 +5,8 @@
  */
 package milky_way;
 
+import UI_Texto.ITexto;
+
 /**
  *
  * @author inose_000
@@ -16,7 +18,8 @@ public class Milky_way {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("yo");
+        ITexto interfacet = new ITexto();
+        interfacet.printMapa();
     }
     
 }

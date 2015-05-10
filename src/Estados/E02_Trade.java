@@ -43,7 +43,7 @@ public class E02_Trade extends Estado{
     @Override
     public Estado retomarMovimento(){
         jog.resetAtaques();
-        
+        jog.getJogadorActivo().finalizarCompras();
         return new E01_Movimento(jog);}
     
 }

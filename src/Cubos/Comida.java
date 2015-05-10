@@ -9,6 +9,5 @@ package Cubos;
  *
  * @author inose_000
  */
-public class CuboVermelho extends Cubo{
-    
+public class Comida extends Cubo{
 }
