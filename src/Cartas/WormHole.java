@@ -11,4 +11,7 @@ package Cartas;
  */
 public class WormHole extends Carta{
     
+    public WormHole(){
+        visible = true;
+    }
 }

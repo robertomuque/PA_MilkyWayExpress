@@ -117,12 +117,18 @@ public class Jogo {
         else if(ligacaoX > pX[1]){
             addX = 1;
         }
+        else if(ligacaoX == pX[1]){
+            addX = 0;
+        }
         // Sentido Y
         if(ligacaoY < pY[1]){
             addY = -1;
         }
         else if(ligacaoY > pY[1]){
             addY = 1;
+        }
+        else if(ligacaoY == pY[1]){
+            addY = 0;
         }
         // Ciclo principal
         while((ligacaoX != pX[1] && ligacaoY != pY[1]) && (baralho.size() > 0)){
@@ -155,14 +161,12 @@ public class Jogo {
                     nextY = ligacaoY + addY;
                 }
             }
-            if((nextX >= 0 && nextX <= 9) && (nextY >= 0 && nextY <= 9)){
-                if((nextX != pX[1] && nextY != pY[1]) && (ligacaoX != pX[1] && ligacaoY != pY[1]) && mapa[nextX][nextY] == null){
-                    sorte = aleatorio.nextInt(baralho.size());  // Escolhe carta aleatoria do baralho
-                    mapa[nextX][nextY] = baralho.get(sorte);    // Coloca essa carta no mapa
-                    baralho.remove(sorte);                      // Apaga essa carta do baralho
-                    ligacaoX = nextX;
-                    ligacaoY = nextY;
-                }
+            if(((nextX >= 0 && nextX <= 9) && (nextY >= 0 && nextY <= 9)) && (nextX != pX[1] && nextY != pY[1]) && (ligacaoX != pX[1] && ligacaoY != pY[1]) && mapa[nextX][nextY] == null){
+                sorte = aleatorio.nextInt(baralho.size());  // Escolhe carta aleatoria do baralho
+                mapa[nextX][nextY] = baralho.get(sorte);    // Coloca essa carta no mapa
+                baralho.remove(sorte);                      // Apaga essa carta do baralho
+                ligacaoX = nextX;
+                ligacaoY = nextY;
             }
         }
         
