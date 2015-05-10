@@ -32,7 +32,7 @@ public class ITexto {
                 if(mapData[i][j] == null){
                     letra = ' ';    // Espaço fora do mapa
                 }
-                else if(false == mapData[i][j].getVisible() && mapData[i][j] instanceof WormHole){
+                else if(false == mapData[i][j].getVisible()){
                    letra = '?';     // Carta ainda nao descoberta
                 }
                 else if(mapData[i][j] instanceof EmptySpace){
