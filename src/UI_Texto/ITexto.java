@@ -29,11 +29,11 @@ public class ITexto {
         // Cria array de caracteres 10x10 do mapa
         for(i = 0; i < dimX; i++){
             for(j = 0; j < dimY; j++){
-                if(!mapData[i][j].getVisible()){
-                   letra = '?';     // Carta ainda nao descoberta
-                }
-                else if(mapData[i][j] == null){
+                if(mapData[i][j] == null){
                     letra = ' ';    // Espaço fora do mapa
+                }
+                else if(false == mapData[i][j].getVisible() && mapData[i][j] instanceof WormHole){
+                   letra = '?';     // Carta ainda nao descoberta
                 }
                 else if(mapData[i][j] instanceof EmptySpace){
                     letra = 'E';    // EmptySpace
@@ -59,9 +59,9 @@ public class ITexto {
                 // O token da nave pode ser '1' e '2', para o jogador 1 e jogador 2, respetivamente ...
                 
                 System.out.print(charMap[i][j]);
-                // Faz mudança de linha de 10 em 10 caracteres ?!
             }
-        }        
+            System.out.print('\n');
+        }
     }
     
     
