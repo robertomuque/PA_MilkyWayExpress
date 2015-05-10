@@ -40,6 +40,7 @@ public class E02_Trade extends Estado{
     public Estado vender(Cubo material){
         return this;
     }
+    
     @Override
     public Estado retomarMovimento(){
         jog.resetAtaques();
