@@ -20,7 +20,7 @@ public class Jogo {
     List<Cubo> banco = new ArrayList<>();
     Carta [][] mapa = new Carta[10][10];
     List<AtaquePirata> ataque = new ArrayList<>();
-    Random aletaorio = new Random();
+    Random aleatorio = new Random();
     
     public Jogo(){
         for(int i=0;i<2;i++)
@@ -65,12 +65,14 @@ public class Jogo {
         int []pX = new int[2];
         int []pY = new int[2];
         int nextX=0, nextY=0;
-        int canto1, canto2, difX, difY, sorte, conta;
+        int addX = 0;
+        int addY = 0;
+        int canto1, canto2, ligacaoX, ligacaoY, difX, difY, sorte, conta;
         
         // Escolhe cantos dos WormHoles
-        canto1 = aletaorio.nextInt(4);
+        canto1 = aleatorio.nextInt(4);
         do{
-            canto2 = aletaorio.nextInt(4);
+            canto2 = aleatorio.nextInt(4);
         }while(canto2 == canto1);
         
         // Colocacao dos WormHoles
@@ -104,40 +106,82 @@ public class Jogo {
                     break;
             }
         }
-        
+         
         // Ligacao entre WormHoles (1 -> 2)
-        int ligacaoX = pX[0];
-        int ligacaoY = pY[0];
-        while((ligacaoX != pX[1] && ligacaoY != pX[1]) && baralho.size() > 0){
+        ligacaoX = pX[0];
+        ligacaoY = pY[0];
+        // Sentido X
+        if(ligacaoX < pX[1]){
+            addX = -1;
+        }
+        else if(ligacaoX > pX[1]){
+            addX = 1;
+        }
+        // Sentido Y
+        if(ligacaoY < pY[1]){
+            addY = -1;
+        }
+        else if(ligacaoY > pY[1]){
+            addY = 1;
+        }
+        // Ciclo principal
+        while((ligacaoX != pX[1] && ligacaoY != pY[1]) && (baralho.size() > 0)){
             difX = pX[1] - ligacaoX;
             difY = pY[1] - ligacaoY;
-            if(Math.abs(difX) > Math.abs(difY) && difX != 0){
-                nextX = ligacaoX + (1 * (ligacaoX / Math.abs(ligacaoX)));
+            if(difX == 0 && Math.abs(difY) > 0){        // Caso 1
+                nextX = ligacaoX;
+                nextY = ligacaoY + addY;
+            }
+            else if(difY == 0 && Math.abs(difX) > 0){       // Caso 2
+                nextX = ligacaoX + addX;
                 nextY = ligacaoY;
             }
-            else if(Math.abs(difX) < Math.abs(difY) && difY != 0){
-                nextX = ligacaoX;
-                nextY = ligacaoY + (1 * (ligacaoY / Math.abs(ligacaoY)));
+            else if(Math.abs(difX) > Math.abs(difY) && difX != 0 && difY != 0){     // Caso 3
+                nextX = ligacaoX + addX;
+                nextY = ligacaoY;
             }
-            sorte = aletaorio.nextInt(baralho.size());
-            mapa[nextX][nextY] = baralho.get(sorte);
-            baralho.remove(sorte);
+            else if(Math.abs(difX) < Math.abs(difY) && difX != 0 && difY != 0){     // Caso 4
+                nextX = ligacaoX;
+                nextY = ligacaoY + addY;
+            }
+            else if(Math.abs(difX) == Math.abs(difY)){      // Caso 5
+                int desempata = aleatorio.nextInt(2);
+                if(desempata == 0){
+                    nextX = ligacaoX + addX;
+                    nextY = ligacaoY;
+                }
+                else{
+                    nextX = ligacaoX;                    
+                    nextY = ligacaoY + addY;
+                }
+            }
+            if((nextX >= 0 && nextX <= 9) && (nextY >= 0 && nextY <= 9)){
+                if((nextX != pX[1] && nextY != pY[1]) && (ligacaoX != pX[1] && ligacaoY != pY[1]) && mapa[nextX][nextY] == null){
+                    sorte = aleatorio.nextInt(baralho.size());  // Escolhe carta aleatoria do baralho
+                    mapa[nextX][nextY] = baralho.get(sorte);    // Coloca essa carta no mapa
+                    baralho.remove(sorte);                      // Apaga essa carta do baralho
+                    ligacaoX = nextX;
+                    ligacaoY = nextY;
+                }
+            }
         }
         
         // Colocacao das restantes cartas do baralho
         while(baralho.size() > 0){
             conta = 0;
-            int sorteX = 1 + aletaorio.nextInt(7);  // Sorteia posicao em X (1-6)
-            int sorteY = 1 + aletaorio.nextInt(7);  // Sorteia posicao em Y (1-6)
-            for(int varX = -1; varX <= 1; varX++){
-                for(int varY = -1; varY <= 1; varY++){
-                    if(varX != 0 && varY != 0 && mapa[sorteX + varX][sorteY + varY] == null){
-                        conta++;    // Conta numero de cartas adjacentes a posicao atual
+            int sorteX = 1 + aleatorio.nextInt(8);  // Sorteia posicao em X (1-8)
+            int sorteY = 1 + aleatorio.nextInt(8);  // Sorteia posicao em Y (1-8)
+            if(mapa[sorteX][sorteY] == null){   // Garante que a celula esta vazia
+                for(int varX = -1; varX <= 1; varX++){
+                    for(int varY = -1; varY <= 1; varY++){
+                        if((varX != 0 && varY != 0) && mapa[sorteX + varX][sorteY + varY] != null){   // Conta celulas circundanes nao vazias (com carta)
+                            conta++;    // Conta numero de cartas adjacentes a posicao atual nao vazias (com carta)
+                        }
                     }
                 }
             }
             if(conta > 0){                                     // Se qualquer celula circundante tiver carta
-                sorte = aletaorio.nextInt(baralho.size());     // Assim so coloca cartas adjacentes a outras cartas antes colocadas
+                sorte = aleatorio.nextInt(baralho.size());     // Assim so coloca cartas adjacentes a outras cartas antes colocadas
                 mapa[sorteX][sorteY] = baralho.get(sorte);
                 baralho.remove(sorte);
             }
