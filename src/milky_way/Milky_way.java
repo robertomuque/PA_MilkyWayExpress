@@ -19,7 +19,8 @@ public class Milky_way {
     public static void main(String[] args) {
         // TODO code application logic here
         ITexto interfacet = new ITexto();
-        interfacet.printMapa();
+        interfacet.ApresentaMenuInicial();
+        interfacet.tabuleiroDeJogo();
     }
     
 }

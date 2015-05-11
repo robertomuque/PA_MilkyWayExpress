@@ -4,7 +4,9 @@ package UI_Texto;
 
 import Jogo.*;
 import Cartas.*;
+import Jogador.Jogador;
 import Planetas.*;
+import java.util.Scanner;
 
 
 public class ITexto {
@@ -64,8 +66,77 @@ public class ITexto {
         }
     }
     
+    public void ApresentaMenuInicial(){
+        System.out.println("BEM VINDO");
+        System.out.println();
+        int x = 0;
+        while(x != 1 && x != 2 && x !=3){        
+            System.out.println("1. Adicionar Jogador 2");
+            System.out.println("2. Começar Jogo");
+            System.out.println("3. Terminar Jogo");
+            System.out.println();
+            System.out.println();
+            Scanner sc = new Scanner(System.in);
+            x = sc.nextInt();
+            if(x!=1 && x!=2 && x !=3){
+            System.out.println();
+            System.out.println();
+            System.out.println("Opção incorrecta");
+            System.out.println();
+            System.out.println();
+            }
+            
+            if(x == 1){
+                jogo.addJogador(new Jogador());
+            }
+            if(x==2){
+                jogo.comecarJogo();
+            }
+            
+        }
+        
+    }
     
-    void adicionaJogador(){
+    public void tabuleiroDeJogo(){
+        int x = 88;
+        while(x!=1 && x!=2){
+        System.out.println("---------------------------------------------------");
+        System.out.println("MILKY WAY EXPRESS");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        
+        printMapa();
+            System.out.println();
+            System.out.println();
+            System.out.println("0 - Instruções");
+            Scanner sc = new Scanner(System.in);
+            x = sc.nextInt();
+            if(x==0)
+            {
+                instrucoesMovimento();
+            }
+        }
+        
+        
+    }
+    
+    public void instrucoesMovimento(){
+        while(true){
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("W - buraco negro");
+        System.out.println("? - inexplorado");
+        System.out.println("0 - voltar ao mapa");
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+                if(x==0){
+                    return;
+                }
+        }
+        
         
     }
     

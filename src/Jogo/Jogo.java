@@ -4,6 +4,8 @@ package Jogo;
 import Ataque.AtaquePirata;
 import Cartas.*;
 import Cubos.*;
+import Estados.*;
+import Estados.Estado;
 import Jogador.Jogador;
 import Planetas.*;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ public class Jogo {
     Jogador jogador1;
     Jogador jogador2;
     Jogador jogadoractivo;
+    Estado state;
     List<Carta> baralho = new ArrayList<>();
     List<Cubo> banco = new ArrayList<>();
     Carta [][] mapa = new Carta[10][10];
@@ -23,6 +26,8 @@ public class Jogo {
     Random aleatorio = new Random();
     
     public Jogo(){
+        jogador1 = new Jogador();
+        state = new E00_Menu(this);
         for(int i=0;i<2;i++)
         {
             baralho.add(new WormHole());
@@ -43,17 +48,34 @@ public class Jogo {
     }
     
     public void addJogador(Jogador jog){
-        if(jogador1 == null){
-            jogador1 = new Jogador();
-        }else if(jogador2 == null){
+        if(jogador2 == null){
             jogador2 = new Jogador();
         }
+        state = state.addJogador(jogador2);
+    }
+    
+    public void comecarJogo(){
+        state = state.iniciarJogo();
+    }
+    
+    public void moverNave(int x, int y){
+        state = state.moverNave(jogadoractivo, x, y);
+    }
+    
+    public void pararNave(){
+        state = state.pararNave(mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosX()]);
+    }
+    
+    public void retomarMovimento(){
+        state = state.retomarMovimento();
     }
     
     public void removeJogador(){
         if(jogador2!=null){
             jogador2 = null;
         }
+        
+        state = new E00_Menu(this);
     }
     
     public void setMapa(){  // Criação aleatória do mapa
@@ -196,8 +218,6 @@ public class Jogo {
         return 0;
     }
     
-    public void moverNave(int x, int y){  }
-    
     public int getPosX(){
         return 0;
     }
@@ -227,8 +247,8 @@ public class Jogo {
         ataque.clear();
     }
     
-    public void finalizarCompras(){
-        
+    public void setEstado(Estado estado){
+        state = estado;
     }
     
     public Carta[][] getMapa(){

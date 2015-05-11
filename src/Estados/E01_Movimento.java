@@ -48,7 +48,7 @@ public class E01_Movimento extends Estado{
             
         }
         else{
-            return this;
+            return new E03_Parado(jog);
         }
     }
 }

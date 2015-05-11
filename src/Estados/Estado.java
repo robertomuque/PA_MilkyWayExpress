@@ -14,13 +14,18 @@ import Jogo.*;
  *
  * @author inose_000
  */
-abstract class Estado {
+public class Estado {
     Jogo jog;
     boolean fim = false;
     public Estado(Jogo jogo){jog = jogo;}
     public Estado adicionarJogador(Jogador jog){
         return null;
     }
+    
+    public Estado addJogador(Jogador jogador){
+        return this;
+    }
+    
     public Estado iniciarJogo(){return this;}
     
     public Estado moverNave(Jogador jogador, int x, int y){return this;}
