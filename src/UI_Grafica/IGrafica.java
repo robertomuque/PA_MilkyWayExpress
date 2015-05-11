@@ -5,10 +5,15 @@
  */
 package UI_Grafica;
 
+import Jogo.Jogo;
+
 /**
  *
  * @author inose_000
  */
 public class IGrafica {
-    
+    Jogo jogo;
+    public IGrafica(Jogo jog){
+        jogo = jog;
+    }
 }
