@@ -282,4 +282,8 @@ public class Jogo {
     public Jogador getJogador2(){
         return jogador2;
     }
+    
+    public Estado getEstado(){
+        return state;
+    }
 }

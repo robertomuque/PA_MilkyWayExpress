@@ -19,15 +19,15 @@ public class E02_Trade extends Estado{
        
     @Override
     public Estado upgradeForca(){
-        int x = jog.getJogadorActivo().getNave().upgradeForca();
-        jog.getJogadorActivo().fazCompra(x);
+        int x = jog.getJogador1().getNave().upgradeForca();
+        jog.getJogador1().fazCompra(x);
         return this;
     }
     
     @Override
     public Estado upgradeCarga(){
-        int x = jog.getJogadorActivo().getNave().upgradeCarga();
-        jog.getJogadorActivo().fazCompra(x);
+        int x = jog.getJogador1().getNave().upgradeCarga();
+        jog.getJogador1().fazCompra(x);
         return this;
     }
     

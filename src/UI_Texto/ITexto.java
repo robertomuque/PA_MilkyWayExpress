@@ -4,6 +4,7 @@ package UI_Texto;
 
 import Jogo.*;
 import Cartas.*;
+import Estados.*;
 import Jogador.Jogador;
 import Planetas.*;
 import java.util.Scanner;
@@ -73,7 +74,7 @@ public class ITexto {
         }
     }
     
-    public void ApresentaMenuInicial(){
+    public void apresentaMenuInicial(){
         System.out.println("BEM VINDO");
         System.out.println();
         int x = 0;
@@ -153,12 +154,30 @@ public class ITexto {
             x = sc.nextInt();
             
             if(x==1){
-                jogo.upgradeForca();
+                if(jogo.getJogadorActivo().getFundos() > jogo.getJogadorActivo().getNave().upgradeForcaPreco()){
+                    jogo.getJogadorActivo().fazCompra(jogo.getJogadorActivo().getNave().upgradeForca());
+                }
+                else
+                {
+                    System.out.println("Fundos insuficientes");
+                    System.out.println();
+                    System.out.println();
+                }
                 System.out.println("A sua forca é agora " + jogo.getJogadorActivo().getNave().getForca());
                 System.out.println();
                 System.out.println();
             }else if(x==2){
-                jogo.upgradeCarga();
+                if(jogo.getJogadorActivo().getFundos() > jogo.getJogadorActivo().getNave().upgradeCargaPreco())
+                {
+                    jogo.getJogadorActivo().fazCompra(jogo.getJogadorActivo().getNave().upgradeCarga());
+                }
+                else
+                {
+                    System.out.println("Fundos insuficientes");
+                    System.out.println();
+                    System.out.println();
+                }
+                
                 System.out.println("A sua capacidade é agora " + jogo.getJogadorActivo().getNave().getCarga());
                 System.out.println();
                 System.out.println();
@@ -185,9 +204,40 @@ public class ITexto {
                 if(x==0){
                     return;
                 }
-        }
-        
+        }     
         
     }
     
+    public void naveParada(){
+        System.out.println();
+        System.out.println();
+        System.out.println("Nave Parada");
+        System.out.println("5 - Retomar Movimento");
+        Scanner sc = new Scanner(System.in);
+        int var;
+        do{
+           var = sc.nextInt();
+           jogo.retomarMovimento();
+        }while(var != 5);
+    }
+    
+    public void exe(){
+        Estado estado = new E00_Menu(jogo);
+        
+        while(true){
+            estado = jogo.getEstado();
+            if(estado instanceof E00_Menu){
+                apresentaMenuInicial();
+            }else if(estado instanceof E01_Movimento){
+                tabuleiroDeJogo();
+            }else if(estado instanceof E02_Trade){
+                faseDeTrade();
+            }
+            else if(estado instanceof E03_Parado){
+                naveParada();
+            }
+        }
+    }
 }
+    
+

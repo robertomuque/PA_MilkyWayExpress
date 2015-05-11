@@ -39,7 +39,7 @@ public class ShipCard extends Carta{
     
     public int upgradeForca(){
         for(int i=0;i<forca.length;i++){
-            if(forca[i] != null){
+            if(forca[i] instanceof CuboCinza){
                 forca[i] = null;
                 return i+1;
             }
@@ -47,15 +47,34 @@ public class ShipCard extends Carta{
         return 0;
     }
     
-    public int upgradeCarga(){
+    public int upgradeForcaPreco(){
         for(int i=0;i<forca.length;i++){
-            if(carga[i] != null){
+            if(forca[i] instanceof CuboCinza){
+                return i+1;
+            }
+        }
+        return 0;
+    }
+    
+    public int upgradeCarga(){
+        for(int i=0;i<carga.length;i++){
+            if(carga[i] instanceof CuboCinza){
                 carga[i] = null;
                 return i+1;
             }
         }
         return 0;
     }
+    public int upgradeCargaPreco(){
+        for(int i=0;i<carga.length;i++){
+            if(carga[i] instanceof CuboCinza){
+                return i+1;
+            }
+        }
+        return 0;
+    }
+    
+    
     
     public void adicionarCompra(Cubo material){
         for(int i=0;i<carga.length;i++){
