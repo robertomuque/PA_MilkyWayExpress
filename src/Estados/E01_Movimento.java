@@ -76,7 +76,6 @@ public class E01_Movimento extends Estado{
             jog.getJogadorActivo().fazCompra(ataque1.getResgate());
             jog.getJogadorActivo().fazCompra(ataque2.getResgate());
             return new E03_Parado(jog);
-            
         }
         else{
             return new E03_Parado(jog);

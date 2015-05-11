@@ -79,14 +79,13 @@ public class ITexto {
         System.out.println();
         int x = 0;
         while(x != 1 && x != 2 && x !=3){        
-            System.out.println("1. Adicionar Jogador 2");
-            System.out.println("2. Começar Jogo");
-            System.out.println("3. Terminar Jogo");
+            System.out.println("1. Começar Jogo");
+            System.out.println("2. Terminar Jogo");
             System.out.println();
             System.out.println();
             Scanner sc = new Scanner(System.in);
             x = sc.nextInt();
-            if(x!=1 && x!=2 && x !=3){
+            if(x!=1 && x!=2){
             System.out.println();
             System.out.println();
             System.out.println("Opção incorrecta");
@@ -95,10 +94,10 @@ public class ITexto {
             }
             
             if(x == 1){
-                jogo.addJogador(new Jogador());
+                jogo.comecarJogo();
             }
             if(x==2){
-                jogo.comecarJogo();
+                System.exit(0);
             }
             
         }

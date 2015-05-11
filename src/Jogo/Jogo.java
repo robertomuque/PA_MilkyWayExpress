@@ -62,6 +62,9 @@ public class Jogo {
     
     public void moverNave(int x){
         state = state.moverNave(jogadoractivo, x);
+        if(mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosX()] != null){
+            mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosX()].setVisible();
+        }
     }
     
     public void upgradeForca(){
