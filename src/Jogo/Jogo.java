@@ -28,6 +28,7 @@ public class Jogo {
     
     public Jogo(){
         jogador1 = new Jogador();
+        jogadoractivo = jogador1;
         state = new E00_Menu(this);
         for(int i=0;i<2;i++)
         {
@@ -59,8 +60,16 @@ public class Jogo {
         state = state.iniciarJogo();
     }
     
-    public void moverNave(int x, int y){
-        state = state.moverNave(jogadoractivo, x, y);
+    public void moverNave(int x){
+        state = state.moverNave(jogadoractivo, x);
+    }
+    
+    public void upgradeForca(){
+        state = state.upgradeForca();
+    }
+    
+    public void upgradeCarga(){
+        state = state.upgradeCarga();
     }
     
     public void pararNave(){
@@ -129,8 +138,8 @@ public class Jogo {
                     break;
             }
             // Guarda coordenadas do primeiro WormHole
-            wh0[0] = pX[0];
-            wh0[1] = pY[0];
+            jogador1.getToken().setX(pX[0]);
+            jogador1.getToken().setY(pY[0]);
         }
          
         // Ligacao entre WormHoles (1 -> 2)
@@ -264,5 +273,13 @@ public class Jogo {
         // X = wh0[0]
         // Y = wh0[1]
         return wh0;
+    }
+    
+    public Jogador getJogador1(){
+        return jogador1;
+    }
+    
+    public Jogador getJogador2(){
+        return jogador2;
     }
 }

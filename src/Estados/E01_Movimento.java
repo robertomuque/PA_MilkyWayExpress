@@ -21,13 +21,44 @@ public class E01_Movimento extends Estado{
     }
     
     @Override
-    public Estado moverNave(Jogador jogador, int x, int y){
+    public Estado moverNave(Jogador jogador, int x){
         if(jogador.getFundos()<=0){
             
             return new E00_Menu(jog);
         }
         else
         {
+            /*if(x==7 && jog.getJogadorActivo().getToken().getPosX()>0 && jog.getJogadorActivo().getToken().getPosY()>0) {
+                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()-1);
+                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()-1);
+            }
+            else if(x==1 && jog.getJogadorActivo().getToken().getPosX()>0 && jog.getJogadorActivo().getToken().getPosY()<9) {
+                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()+1);
+                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()-1);
+            }
+            else if(x==3 && jog.getJogadorActivo().getToken().getPosX()<9 && jog.getJogadorActivo().getToken().getPosY()<9) {
+                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()+1);
+                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()+1);
+            }
+            else if(x==9 && jog.getJogadorActivo().getToken().getPosX()<9 && jog.getJogadorActivo().getToken().getPosY()>0) {
+                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()-1);
+                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()+1);
+            }
+            else*/ if(x==8 && jog.getJogadorActivo().getToken().getPosX()>0) {
+                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()-1);
+            }
+            else if(x==2 && jog.getJogadorActivo().getToken().getPosX()<9) {
+                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()+1);
+            }
+            else if(x==4 && jog.getJogadorActivo().getToken().getPosY()>0) {
+                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()-1);
+            }
+            else if(x==6 && jog.getJogadorActivo().getToken().getPosY()<9) {
+                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()+1);
+            }
+            else{
+                return this;
+            }
             jog.getJogadorActivo().fazCompra(1);
             return this;
             //

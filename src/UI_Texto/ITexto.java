@@ -31,28 +31,34 @@ public class ITexto {
         // Cria array de caracteres 10x10 do mapa
         for(i = 0; i < dimX; i++){
             for(j = 0; j < dimY; j++){
-                if(mapData[i][j] == null){
-                    letra = ' ';    // Espaço fora do mapa
-                }
-                else if(false == mapData[i][j].getVisible()){
-                   letra = '?';     // Carta ainda nao descoberta
-                }
-                else if(mapData[i][j] instanceof EmptySpace){
-                    letra = 'E';    // EmptySpace
-                }
-                else if(mapData[i][j] instanceof WormHole){
-                    letra = 'W';    // WormHole
-                }
-                else if(mapData[i][j] instanceof Planeta){
-                    letra = 'P';    // Planeta
-                }
-                else if(mapData[i][j] instanceof PlanetaPirata){
-                    letra = 'K';    // Planeta Pirata
-                }
-                charMap[i][j] = letra;
+                    if((i == jogo.getJogador1().getToken().getPosX()) && (j == jogo.getJogador1().getToken().getPosY()))
+                    {
+                            charMap[i][j] = '1';
+                    }
+                    else
+                    {
+                        if(mapData[i][j] == null){
+                                letra = ' ';    // Espaço fora do mapa
+                            }
+                            else if(false == mapData[i][j].getVisible()){
+                               letra = '?';     // Carta ainda nao descoberta
+                            }
+                            else if(mapData[i][j] instanceof EmptySpace){
+                                letra = 'E';    // EmptySpace
+                            }
+                            else if(mapData[i][j] instanceof WormHole){
+                                letra = 'W';    // WormHole
+                            }
+                            else if(mapData[i][j] instanceof Planeta){
+                                letra = 'P';    // Planeta
+                            }
+                            else if(mapData[i][j] instanceof PlanetaPirata){
+                                letra = 'K';    // Planeta Pirata
+                            }
+                            charMap[i][j] = letra;
+                    }
             }
         }
-        
         // Imprime mapa
         for(i = 0; i < dimX; i++){
             for(j = 0; j < dimY; j++){
@@ -62,6 +68,7 @@ public class ITexto {
                 
                 System.out.print(charMap[i][j]);
             }
+            
             System.out.print('\n');
         }
     }
@@ -109,16 +116,59 @@ public class ITexto {
         printMapa();
             System.out.println();
             System.out.println();
-            System.out.println("0 - Instruções");
+            System.out.println("0 - legendas");
+            System.out.println("5 - Parar Nave");
+            System.out.println("112 - info sobre posição actual");
             Scanner sc = new Scanner(System.in);
             x = sc.nextInt();
             if(x==0)
             {
                 instrucoesMovimento();
-            }
+            }else if(x==5){
+                jogo.pararNave();
+                return;
+            }else{
+                jogo.moverNave(x);
+            }            
+            
+            x = 88;
         }
         
         
+    }
+    
+    public void faseDeTrade(){
+        int x = 0;
+        while(x!=5){
+        System.out.println("-------------------------------------------");
+        System.out.println();
+        System.out.println();
+        System.out.println("TRADE");
+        System.out.println("1 - Upgrade Força");
+        System.out.println("2 - Upgrade Carga");
+        System.out.println("3 - Vender Carga");
+        System.out.println("4 - Comprar Carga");
+        System.out.println("5 - Retomar Movimento");
+        Scanner sc = new Scanner(System.in);
+            x = sc.nextInt();
+            
+            if(x==1){
+                jogo.upgradeForca();
+                System.out.println("A sua forca é agora " + jogo.getJogadorActivo().getNave().getForca());
+                System.out.println();
+                System.out.println();
+            }else if(x==2){
+                jogo.upgradeCarga();
+                System.out.println("A sua capacidade é agora " + jogo.getJogadorActivo().getNave().getCarga());
+                System.out.println();
+                System.out.println();
+            }else if(x==3){
+                
+            }else if(x==4){
+                
+            }
+        }
+        jogo.retomarMovimento();
     }
     
     public void instrucoesMovimento(){

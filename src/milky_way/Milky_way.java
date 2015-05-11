@@ -20,7 +20,7 @@ public class Milky_way {
         // TODO code application logic here
         ITexto interfacet = new ITexto();
         interfacet.ApresentaMenuInicial();
-        interfacet.tabuleiroDeJogo();
+        interfacet.faseDeTrade();
     }
     
 }

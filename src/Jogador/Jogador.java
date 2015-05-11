@@ -23,6 +23,7 @@ public class Jogador {
     public Jogador(){
         token = new ShipToken(this);
         nave = new ShipCard(this);
+        addFundos(10);
     }
     
     public ShipCard getNave(){
@@ -53,6 +54,12 @@ public class Jogador {
     
     public ShipToken getToken(){
         return token;
+    }
+    
+    public void addFundos(int x){
+        for(int i=0;i<x;i++){
+            fundos.add(new Coin());
+        }
     }
     
 }
