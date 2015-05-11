@@ -289,4 +289,16 @@ public class Jogo {
     public Estado getEstado(){
         return state;
     }
+    
+    public String getCartaActual(){
+        if(mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosX()] != null){
+            return mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosX()].getClass().getSimpleName(); 
+        }
+        else
+        {
+            return "Informação desconhecida";
+        }
+           
+        
+    }
 }

@@ -75,7 +75,7 @@ public class E01_Movimento extends Estado{
             AtaquePirata ataque2 = jog.getAtaque2();
             jog.getJogadorActivo().fazCompra(ataque1.getResgate());
             jog.getJogadorActivo().fazCompra(ataque2.getResgate());
-            return new E03_Parado(jog);
+            return new E02_Trade(jog);
         }
         else{
             return new E03_Parado(jog);

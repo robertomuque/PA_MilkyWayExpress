@@ -127,6 +127,11 @@ public class ITexto {
             }else if(x==5){
                 jogo.pararNave();
                 return;
+            }else if(x==112){
+                System.out.println();
+                System.out.println();
+                System.out.println("Está actualmente em " + jogo.getCartaActual());
+                
             }else{
                 jogo.moverNave(x);
             }            
