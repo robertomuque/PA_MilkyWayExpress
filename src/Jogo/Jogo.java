@@ -76,7 +76,7 @@ public class Jogo {
     }
     
     public void pararNave(){
-        state = state.pararNave(mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosX()]);
+        state = state.pararNave(mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosY()]);
     }
     
     public void retomarMovimento(){
@@ -235,11 +235,11 @@ public class Jogo {
     }
     
     public int getPosX(){
-        return 0;
+        return jogadoractivo.getToken().getPosX();
     }
     
     public int getPosY(){
-        return 0;
+        return jogadoractivo.getToken().getPosY();
     }
     
     public Jogador getJogadorActivo(){

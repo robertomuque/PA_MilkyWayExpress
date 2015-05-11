@@ -32,7 +32,7 @@ public class ITexto {
         // Cria array de caracteres 10x10 do mapa
         for(i = 0; i < dimX; i++){
             for(j = 0; j < dimY; j++){
-                    if((i == jogo.getJogador1().getToken().getPosX()) && (j == jogo.getJogador1().getToken().getPosY()))
+                    if((j == jogo.getJogador1().getToken().getPosX()) && (i == jogo.getJogador1().getToken().getPosY()))
                     {
                             charMap[i][j] = '1';
                     }
