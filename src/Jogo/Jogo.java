@@ -24,6 +24,7 @@ public class Jogo {
     Carta [][] mapa = new Carta[10][10];
     List<AtaquePirata> ataque = new ArrayList<>();
     Random aleatorio = new Random();
+    int [] wh0 = new int[2]; // X=wh0[0], Y=wh0[1]
     
     public Jogo(){
         jogador1 = new Jogador();
@@ -127,6 +128,9 @@ public class Jogo {
                     pY[i] = 9;
                     break;
             }
+            // Guarda coordenadas do primeiro WormHole
+            wh0[0] = pX[0];
+            wh0[1] = pY[0];
         }
          
         // Ligacao entre WormHoles (1 -> 2)
@@ -253,5 +257,12 @@ public class Jogo {
     
     public Carta[][] getMapa(){
         return mapa;
+    }
+    
+    public int[] getWormHoleCoord(){
+        // Retorna coordenadas do primeiro WormHole
+        // X = wh0[0]
+        // Y = wh0[1]
+        return wh0;
     }
 }
