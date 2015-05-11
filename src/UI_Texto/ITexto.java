@@ -21,7 +21,6 @@ public class ITexto {
         mapData = jogo.getMapa();
     }
     
-    
     public void printMapa(){
         int i, j;
         int dimX = 10;
@@ -32,8 +31,9 @@ public class ITexto {
         // Cria array de caracteres 10x10 do mapa
         for(i = 0; i < dimX; i++){
             for(j = 0; j < dimY; j++){
-                    if((j == jogo.getJogador1().getToken().getPosX()) && (i == jogo.getJogador1().getToken().getPosY()))
+                    if((i == jogo.getJogador1().getToken().getPosY()) && (j == jogo.getJogador1().getToken().getPosX()))
                     {
+                        
                             charMap[i][j] = '1';
                     }
                     else
@@ -116,6 +116,7 @@ public class ITexto {
         printMapa();
             System.out.println();
             System.out.println();
+            System.out.println("posicao: " + jogo.getJogadorActivo().getToken().getPosX() + jogo.getJogadorActivo().getToken().getPosY());
             System.out.println("0 - legendas");
             System.out.println("5 - Parar Nave");
             System.out.println("112 - info sobre posição actual");

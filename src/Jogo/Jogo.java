@@ -148,6 +148,7 @@ public class Jogo {
         // Ligacao entre WormHoles (1 -> 2)
         ligacaoX = pX[0];
         ligacaoY = pY[0];
+        System.out.print("a" +ligacaoX + "b" +ligacaoY);
         // Sentido X
         if(ligacaoX < pX[1]){
             addX = -1;
@@ -291,14 +292,12 @@ public class Jogo {
     }
     
     public String getCartaActual(){
-        if(mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosX()] != null){
+        if(mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosY()] != null){
             return mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosX()].getClass().getSimpleName(); 
         }
         else
         {
             return "Informação desconhecida";
-        }
-           
-        
+        }  
     }
 }
