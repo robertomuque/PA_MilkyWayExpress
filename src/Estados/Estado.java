@@ -28,7 +28,7 @@ public class Estado {
     
     public Estado iniciarJogo(){return this;}
     
-    public Estado moverNave(Jogador jogador, int x){return this;}
+    public Estado moverNave(Jogador jogador, int tecla, int x, int y){return this;}
     
     public Estado pararNave(Carta posicao){return this;}
     

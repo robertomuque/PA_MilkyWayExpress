@@ -21,46 +21,54 @@ public class E01_Movimento extends Estado{
     }
     
     @Override
-    public Estado moverNave(Jogador jogador, int x){
+    public Estado moverNave(Jogador jogador, int tecla, int y, int x){
+        int xx=x;
+        int yy=y;
+       
         if(jogador.getFundos()<=0){
             return new E00_Menu(jog);
         }
         else
         {
-            if(x==7 && jog.getJogadorActivo().getToken().getPosX()>0 && jog.getJogadorActivo().getToken().getPosY()>0) {
-                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()-1);
-                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()-1);
+            if(tecla == 7){
+                xx--;
+                yy--;
             }
-            else if(x==1 && jog.getJogadorActivo().getToken().getPosX()>0 && jog.getJogadorActivo().getToken().getPosY()<9) {
-                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()-1);
-                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()+1);
+            else if(tecla == 4){
+                xx--;
             }
-            else if(x==3 && jog.getJogadorActivo().getToken().getPosX()<9 && jog.getJogadorActivo().getToken().getPosY()<9) {
-                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()+1);
-                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()+1);
+            else if(tecla == 1){
+                xx--;
+                yy++;
+            }else if(tecla == 2){
+                yy++;
             }
-            else if(x==9 && jog.getJogadorActivo().getToken().getPosX()<9 && jog.getJogadorActivo().getToken().getPosY()>0) {
-                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()-1);
-                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()+1);
+            else if(tecla == 3){
+                xx++;
+                yy++;
             }
-            else if(x==8 && jog.getJogadorActivo().getToken().getPosY()>0) {
-                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()-1);
+            else if(tecla == 6){
+                xx++;
+            }else if(tecla == 9){
+                xx++;
+                yy--;
+            }else if(tecla == 8){
+                yy--;                
             }
-            else if(x==2 && jog.getJogadorActivo().getToken().getPosY()<9) {
-                jog.getJogadorActivo().getToken().setY(jog.getJogadorActivo().getToken().getPosY()+1);
-            }
-            else if(x==4 && jog.getJogadorActivo().getToken().getPosX()>0) {
-                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()-1);
-            }
-            else if(x==6 && jog.getJogadorActivo().getToken().getPosX()<9) {
-                jog.getJogadorActivo().getToken().setX(jog.getJogadorActivo().getToken().getPosX()+1);
-            }
-            else{
+            
+            if(xx<0 || xx > 9 || yy < 0 || yy >9){
                 return this;
             }
-            jog.getJogadorActivo().fazCompra(1);
-            return this;
-            //
+            else
+            {
+               if(jog.getCarta(yy,xx) != null){
+               jog.getJogadorActivo().getToken().setX(xx);
+               jog.getJogadorActivo().getToken().setY(yy);
+               //jog.getJogadorActivo().fazCompra(1);
+               }
+               
+               return this;
+            }
         }
     }
     

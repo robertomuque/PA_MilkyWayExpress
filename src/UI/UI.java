@@ -3,21 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Cartas;
+package UI;
 
 /**
  *
  * @author inose_000
  */
-public class Carta{
+public class UI {
     
-   boolean visible = false;
-    
-   public void setVisible(){
-       visible = true;
-   }
-   
-   public boolean getVisible(){
-       return visible;
-   }
 }

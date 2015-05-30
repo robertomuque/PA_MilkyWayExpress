@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Cartas;
+package Control;
+
+import Jogo.*;
+import UI.*;
 
 /**
  *
  * @author inose_000
  */
-public class Carta{
+public class Control {
+    Jogo jogo;
+    UI view;
     
-   boolean visible = false;
-    
-   public void setVisible(){
-       visible = true;
-   }
-   
-   public boolean getVisible(){
-       return visible;
-   }
+    public Control(UI vista, Jogo j){
+        view = vista;
+        jogo = j;
+    }
 }

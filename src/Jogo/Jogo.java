@@ -21,7 +21,7 @@ public class Jogo {
     Estado state;
     List<Carta> baralho = new ArrayList<>();
     List<Cubo> banco = new ArrayList<>();
-    Carta [][] mapa = new Carta[10][10];
+    Carta [][] mapa = new Carta[7][7];
     List<AtaquePirata> ataque = new ArrayList<>();
     Random aleatorio = new Random();
     int [] wh0 = new int[2]; // X=wh0[0], Y=wh0[1]
@@ -60,10 +60,12 @@ public class Jogo {
         state = state.iniciarJogo();
     }
     
-    public void moverNave(int x){
-        state = state.moverNave(jogadoractivo, x);
-        if(mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosX()] != null){
-            mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosX()].setVisible();
+    public void moverNave(int tecla, int y, int x){
+        int xx = x;
+        int yy = y;
+        if(mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()] != null){
+            mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()].setVisible();
+            state = state.moverNave(jogadoractivo,tecla,yy, xx);
         }
     }
     
@@ -231,9 +233,83 @@ public class Jogo {
         }
     }
     
-    int preencheMat(Carta cart){
-        return 0;
+    public void setMapaFixo(){
+    // falta inicializar algumas variáveis
+
+    // marca posição com carta (losango)
+    mapa[0][0] = null;
+    mapa[0][1] = null;
+    mapa[0][2] = null;
+    mapa[0][3] = new Carta();
+    mapa[0][4] = null;
+    mapa[0][5] = null;
+    mapa[0][6] = null;
+    mapa[1][0] = null;
+    mapa[1][1] = null;
+    mapa[1][2] = new Carta();
+    mapa[1][3] = new Carta();
+    mapa[1][4] = new Carta();
+    mapa[1][5] = null;
+    mapa[1][6] = null;
+    mapa[2][0] = null;
+    mapa[2][1] = new Carta();
+    mapa[2][2] = new Carta();
+    mapa[2][3] = new Carta();
+    mapa[2][4] = new Carta();
+    mapa[2][5] = new Carta();
+    mapa[2][6] = null;
+    mapa[3][0] = new Carta();
+    mapa[3][1] = new Carta();
+    mapa[3][2] = new Carta();
+    mapa[3][3] = new Carta();
+    mapa[3][4] = new Carta();
+    mapa[3][5] = new Carta();
+    mapa[3][6] = new Carta();
+    mapa[4][0] = null;
+    mapa[4][1] = new Carta();
+    mapa[4][2] = new Carta();
+    mapa[4][3] = new Carta();
+    mapa[4][4] = new Carta();
+    mapa[4][5] = new Carta();
+    mapa[4][6] = null;
+    mapa[5][0] = null;
+    mapa[5][1] = null;
+    mapa[5][2] = new Carta();
+    mapa[5][3] = new Carta();
+    mapa[5][4] = new Carta();
+    mapa[5][5] = null;
+    mapa[5][6] = null;
+    mapa[6][0] = null;
+    mapa[6][1] = null;
+    mapa[6][2] = null;
+    mapa[6][3] = new Carta();
+    mapa[6][4] = null;
+    mapa[6][5] = null;
+    mapa[6][6] = null;
+
+    // coloca cartas (aleatoriamente)
+    int sorte;
+    for(int i=0; i < 7; i++){
+        for(int j=0; j<7; j++){
+            if(i == 3 && j == 0){
+                mapa[i][j] = new WormHole(); // WH inicial
+            }
+            else if(i == 3 && j == 6){
+                mapa[i][j] = new WormHole(); // WH final
+            }
+            else if(mapa[i][j] != null){
+                sorte = aleatorio.nextInt(baralho.size());  // Escolhe carta aleatoria do baralho
+                mapa[i][j] = baralho.get(sorte);    // Coloca essa carta no mapa
+                baralho.remove(sorte);    // e retira do baralho
+            }
+        }
+        
     }
+    jogador1.getToken().setX(0);
+    jogador1.getToken().setY(3);
+
+
+}
     
     public int getPosX(){
         return jogadoractivo.getToken().getPosX();
@@ -272,13 +348,6 @@ public class Jogo {
         return mapa;
     }
     
-    public int[] getWormHoleCoord(){
-        // Retorna coordenadas do primeiro WormHole
-        // X = wh0[0]
-        // Y = wh0[1]
-        return wh0;
-    }
-    
     public Jogador getJogador1(){
         return jogador1;
     }
@@ -291,9 +360,13 @@ public class Jogo {
         return state;
     }
     
+    public Carta getCarta(int y, int x){
+        return mapa[y][x];
+    }
+    
     public String getCartaActual(){
-        if(mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosY()] != null){
-            return mapa[jogadoractivo.getToken().getPosX()][jogadoractivo.getToken().getPosX()].getClass().getSimpleName(); 
+        if(mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()] != null){
+            return mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()].getClass().getSimpleName(); 
         }
         else
         {

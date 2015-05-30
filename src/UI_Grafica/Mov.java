@@ -5,21 +5,15 @@
  */
 package UI_Grafica;
 
-import Jogo.Jogo;
-import UI.UI;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
  * @author inose_000
  */
-public class IGrafica extends UI{
-    Jogo jogo = new Jogo();
-    JFrame igrafica;
-    public IGrafica(){
-    }
-    
-    public void test(){
-        igrafica = new Menu();
-    }
+public class Mov extends JFrame{
+    JPanel Mover;
+    JButton bparar;
 }

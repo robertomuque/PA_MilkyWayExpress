@@ -5,43 +5,47 @@ package UI_Texto;
 import Jogo.*;
 import Cartas.*;
 import Estados.*;
-import Jogador.Jogador;
 import Planetas.*;
+import UI.UI;
 import java.util.Scanner;
 
 
-public class ITexto {
+public class ITexto extends UI{
     Jogo jogo;
+    int [] pos = new int[2];
     Carta [][] mapData;
     int [][] matrizcartas = new int [10][10];
     
     public ITexto(){
         jogo = new Jogo();
-        jogo.setMapa();
+        jogo.setMapaFixo();
         mapData = jogo.getMapa();
+        
     }
     
     public void printMapa(){
         int i, j;
-        int dimX = 10;
-        int dimY = 10;
+        int dimX = 7;
+        int dimY = 7;
         char letra = ' ';
-        char [][] charMap = new char [10][10];
+        char [][] charMap = new char [7][7];
         
         // Cria array de caracteres 10x10 do mapa
         for(i = 0; i < dimX; i++){
             for(j = 0; j < dimY; j++){
-                    if((i == jogo.getJogador1().getToken().getPosY()) && (j == jogo.getJogador1().getToken().getPosX()))
+                    if((j == jogo.getJogador1().getToken().getPosX()) && (i == jogo.getJogador1().getToken().getPosY()))
                     {
                         
                             charMap[i][j] = '1';
+                            pos[0] = i;
+                            pos[1] = j;
                     }
                     else
                     {
                         if(mapData[i][j] == null){
                                 letra = ' ';    // Espaço fora do mapa
                             }
-                            else if(false == mapData[i][j].getVisible()){
+                            else if(!mapData[i][j].getVisible()){
                                letra = '?';     // Carta ainda nao descoberta
                             }
                             else if(mapData[i][j] instanceof EmptySpace){
@@ -61,13 +65,13 @@ public class ITexto {
             }
         }
         // Imprime mapa
-        for(i = 0; i < dimX; i++){
-            for(j = 0; j < dimY; j++){
+        for(int a = 0; a < dimX; a++){
+            for(int b = 0; b < dimY; b++){
                 
                 // Adicionar mudanca de cor para a casa em que o jogador tem o token da nave?
                 // O token da nave pode ser '1' e '2', para o jogador 1 e jogador 2, respetivamente ...
                 
-                System.out.print(charMap[i][j]);
+                System.out.print(charMap[a][b]);
             }
             
             System.out.print('\n');
@@ -106,7 +110,7 @@ public class ITexto {
     
     public void tabuleiroDeJogo(){
         int x = 88;
-        while(x!=1 && x!=2){
+        while(true){
         System.out.println("---------------------------------------------------");
         System.out.println("MILKY WAY EXPRESS");
         System.out.println();
@@ -116,7 +120,7 @@ public class ITexto {
         printMapa();
             System.out.println();
             System.out.println();
-            System.out.println("posicao: " + jogo.getJogadorActivo().getToken().getPosX() + jogo.getJogadorActivo().getToken().getPosY());
+            System.out.println("posicao: " + jogo.getJogadorActivo().getToken().getPosY() + jogo.getJogadorActivo().getToken().getPosX());
             System.out.println("0 - legendas");
             System.out.println("5 - Parar Nave");
             System.out.println("112 - info sobre posição actual");
@@ -134,10 +138,8 @@ public class ITexto {
                 System.out.println("Está actualmente em " + jogo.getCartaActual());
                 
             }else{
-                jogo.moverNave(x);
-            }            
-            
-            x = 88;
+                jogo.moverNave(x,pos[0],pos[1]);
+            }         
         }
         
         
