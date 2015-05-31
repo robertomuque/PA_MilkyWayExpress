@@ -6,8 +6,11 @@
 package UI_Grafica;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,29 +21,49 @@ import javax.swing.JPanel;
  */
 public class Menu extends JFrame{
     
+    CardLayout cardLayout;
+    JPanel geral;
     JPanel menu;
+    JPanel mov;
+    JPanel trade;
     JButton iniciar;
     Container cont;
     JButton addJogador;
     JButton fechar;
     
     public Menu(){
-        super("GALAXY EXPRESS");
+        super("MILKY WAY EXPRESS");
         setVisible(true);
         setSize(600,400);
+        cardLayout = new CardLayout();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
+        geral = new JPanel();
+        geral.setLayout(cardLayout);
         menu = new JPanel();
+        mov = new Mov();
+        menu.setLayout(new BorderLayout());
         menu.setBackground(Color.yellow);
         
-        iniciar = new JButton("1 Jogador");
+        iniciar = new JButton("Iniciar");
         fechar = new JButton("Abandonar");
-        addJogador = new JButton("2 Jogadores");
-        add(menu);
-        menu.add(iniciar);
-        menu.add(fechar);
-        menu.add(addJogador);
+        menu.add(iniciar, BorderLayout.NORTH);
+        menu.add(fechar, BorderLayout.SOUTH);
+        registaListeners();
+        geral.add(menu, "Menu");
+        geral.add(mov, "Mover");
+        cardLayout.show(geral, "Menu");
+        add(geral);
+    }
+    
+    void registaListeners(){
+        iniciar.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("WHOOLAY");
+                cardLayout.show(geral, "Mover");
+                           }
+        });
     }
     
     

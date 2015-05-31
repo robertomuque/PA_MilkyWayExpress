@@ -64,6 +64,7 @@ public class E01_Movimento extends Estado{
                if(jog.getCarta(yy,xx) != null){
                jog.getJogadorActivo().getToken().setX(xx);
                jog.getJogadorActivo().getToken().setY(yy);
+               jog.revelaMapa();
                //jog.getJogadorActivo().fazCompra(1);
                }
                

@@ -60,13 +60,102 @@ public class Jogo {
         state = state.iniciarJogo();
     }
     
+    public void revelaMapa(){
+        try{
+            if(mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()] != null){
+             mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()].setVisible();
+
+         }}
+        catch(IndexOutOfBoundsException e){
+
+        }
+        
+        try{
+            if(mapa[jogadoractivo.getToken().getPosY()-1][jogadoractivo.getToken().getPosX()-1] != null){
+            mapa[jogadoractivo.getToken().getPosY()-1][jogadoractivo.getToken().getPosX()-1].setVisible();
+           
+        }
+        }catch(IndexOutOfBoundsException e){
+            
+        }
+        try{
+           if(mapa[jogadoractivo.getToken().getPosY()-1][jogadoractivo.getToken().getPosX()] != null){
+            mapa[jogadoractivo.getToken().getPosY()-1][jogadoractivo.getToken().getPosX()].setVisible();
+           
+        } 
+        }catch(IndexOutOfBoundsException e){
+            
+        }
+        
+        try{
+          if(mapa[jogadoractivo.getToken().getPosY()-1][jogadoractivo.getToken().getPosX()+1] != null){
+            mapa[jogadoractivo.getToken().getPosY()-1][jogadoractivo.getToken().getPosX()+1].setVisible();
+           
+        }  
+        }catch(IndexOutOfBoundsException e){
+            
+        }
+        
+        try{
+           if(mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()-1] != null){
+            mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()-1].setVisible();
+           
+        } 
+        }catch(IndexOutOfBoundsException e){
+            
+        }
+        
+        try{
+            if(mapa[jogadoractivo.getToken().getPosY()-1][jogadoractivo.getToken().getPosX()] != null){
+            mapa[jogadoractivo.getToken().getPosY()-1][jogadoractivo.getToken().getPosX()].setVisible();
+           
+        }
+        }
+        catch(IndexOutOfBoundsException e){
+                
+                
+        }
+        
+        try{
+          if(mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()+1] != null){
+            mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()+1].setVisible();
+           
+        }  
+        }catch(IndexOutOfBoundsException e){
+            
+        }
+        try{
+         if(mapa[jogadoractivo.getToken().getPosY()+1][jogadoractivo.getToken().getPosX()-1] != null){
+            mapa[jogadoractivo.getToken().getPosY()+1][jogadoractivo.getToken().getPosX()-1].setVisible();
+           
+        }   
+        }catch(IndexOutOfBoundsException e){
+            
+        }
+        
+        try{
+          if(mapa[jogadoractivo.getToken().getPosY()+1][jogadoractivo.getToken().getPosX()] != null){
+            mapa[jogadoractivo.getToken().getPosY()+1][jogadoractivo.getToken().getPosX()].setVisible();
+           
+        }  
+        }catch(IndexOutOfBoundsException e){
+            
+        }
+        
+        try{
+         if(mapa[jogadoractivo.getToken().getPosY()+1][jogadoractivo.getToken().getPosX()+1] != null){
+            mapa[jogadoractivo.getToken().getPosY()+1][jogadoractivo.getToken().getPosX()+1].setVisible();
+           
+        }   
+        }catch(IndexOutOfBoundsException e){
+            
+        }
+    }
+    
     public void moverNave(int tecla, int y, int x){
         int xx = x;
         int yy = y;
-        if(mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()] != null){
-            mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()].setVisible();
-            state = state.moverNave(jogadoractivo,tecla,yy, xx);
-        }
+         state = state.moverNave(jogadoractivo,tecla,yy, xx);
     }
     
     public void upgradeForca(){
@@ -372,5 +461,15 @@ public class Jogo {
         {
             return "Informação desconhecida";
         }  
+    }
+    
+    public void setWormHoles(){
+        for(int i=0;i<baralho.size();i++){
+            
+        }
+    }
+    
+    public void descobreMapa(int yy, int xx){
+        
     }
 }

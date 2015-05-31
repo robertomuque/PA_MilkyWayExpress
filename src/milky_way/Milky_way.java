@@ -19,10 +19,10 @@ public class Milky_way {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ITexto interfacet = new ITexto();
-        //IGrafica itgrafica = new IGrafica();
-        interfacet.exe();
-        //itgrafica.test();
+        //ITexto interfacet = new ITexto();
+        IGrafica itgrafica = new IGrafica();
+        //interfacet.exe();
+        itgrafica.test();
     }
     
 }
