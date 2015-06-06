@@ -30,11 +30,12 @@ public class Menu extends JFrame{
     Container cont;
     JButton addJogador;
     JButton fechar;
+    JButton bparar;
     
     public Menu(){
         super("MILKY WAY EXPRESS");
         setVisible(true);
-        setSize(600,400);
+        setSize(800,600);
         cardLayout = new CardLayout();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         geral = new JPanel();
@@ -53,6 +54,7 @@ public class Menu extends JFrame{
         geral.add(mov, "Mover");
         cardLayout.show(geral, "Menu");
         add(geral);
+        setVisible(true);
     }
     
     void registaListeners(){
@@ -64,6 +66,15 @@ public class Menu extends JFrame{
                 cardLayout.show(geral, "Mover");
                            }
         });
+        
+        fechar.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+            JFrame frame = new JFrame("NAVE");
+            frame.setSize(100, 100);
+            frame.add(new Nave());
+            frame.setVisible(true);
+        }});
     }
     
     
