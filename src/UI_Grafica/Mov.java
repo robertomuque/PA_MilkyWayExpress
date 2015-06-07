@@ -78,10 +78,17 @@ public class Mov extends JPanel{
             for(int j =0;j<x;j++){
                 botoes_lista.add(new JButton());
                 botoes_lista.get(botoes_lista.size()-1).setBackground(Color.red);
+                
                 if(cc.getJogador().getToken().getPosY()==i && cc.getJogador().getToken().getPosX()==j){
-                    center.add(new JButton());
+                    center.add(new JButton("*"));
                 }
-                else{
+                else if(cc.getTipoCarta(i, j)==1){
+                    botoes_lista.get(botoes_lista.size()-1).setBackground(Color.GRAY);
+                    center.add(botoes_lista.get(botoes_lista.size()-1));
+                }else if(cc.getTipoCarta(i, j)==2){
+                    botoes_lista.get(botoes_lista.size()-1).setBackground(Color.MAGENTA);
+                    center.add(botoes_lista.get(botoes_lista.size()-1));
+                }else{
                     center.add(botoes_lista.get(botoes_lista.size()-1));
                 }
                 
