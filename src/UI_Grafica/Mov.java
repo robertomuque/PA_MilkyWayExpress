@@ -5,12 +5,15 @@
  */
 package UI_Grafica;
 
+import Control.Control;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +24,7 @@ import javax.swing.JPanel;
  * @author inose_000
  */
 public class Mov extends JPanel{
+    Control controller;
     JPanel left;
     JPanel center;
     JPanel right;
@@ -32,12 +36,15 @@ public class Mov extends JPanel{
     JLabel jogador;
     JLabel fundos;
     JLabel planeta;
-    int x=10;
-    int y=10;
+    List<JButton> botoes_lista = new ArrayList<>();
+    int x;
+    int y;
     
-    public Mov(){
+    public Mov(Control cc){
         setLayout(new BorderLayout());
-        
+        controller = cc;
+        x=controller.getTamMatrizX();
+        y=controller.getTamMatrizY();
         //---------------------- Left
         left = new JPanel();
         left.setPreferredSize(new Dimension(100,600));
@@ -47,7 +54,7 @@ public class Mov extends JPanel{
         left.add(new JLabel());
         left.add(jogador);
         left.add(new JLabel("Fundos"));
-        fundos = new JLabel();
+        fundos = new JLabel(""+controller.getFundos());
         left.add(fundos);
         left.add(nave = new JButton("Nave"));
         
@@ -67,8 +74,19 @@ public class Mov extends JPanel{
         //-------------------------Center
         center = new JPanel();
         center.setLayout(new GridLayout(y,x));
-        for(int i=0;i<x*y;i++){
-            center.add(new JButton(Integer.toString(i)));
+        for(int i=0;i<y;i++){
+            for(int j =0;j<x;j++){
+                botoes_lista.add(new JButton());
+                botoes_lista.get(botoes_lista.size()-1).setBackground(Color.red);
+                if(cc.getJogador().getToken().getPosY()==i && cc.getJogador().getToken().getPosX()==j){
+                    center.add(new JButton());
+                }
+                else{
+                    center.add(botoes_lista.get(botoes_lista.size()-1));
+                }
+                
+                
+            }
         }
         left.setBackground(Color.blue);
         right.setBackground(Color.blue);
@@ -97,7 +115,7 @@ public class Mov extends JPanel{
             if(ship == null){
                 ship = new JFrame("NAVE");
                 ship.setSize(600, 450);
-                ship.add(new Nave());
+                ship.add(new Nave(controller));
                 ship.setResizable(false);
                 ship.setVisible(true);
             }
