@@ -24,7 +24,8 @@ public class Jogo {
     Carta [][] mapa = new Carta[7][7];
     List<AtaquePirata> ataque = new ArrayList<>();
     Random aleatorio = new Random();
-    int [] wh0 = new int[2]; // X=wh0[0], Y=wh0[1]
+    int matrizX = 7;
+    int matrizY = 7;
     
     public Jogo(){
         jogador1 = new Jogador();
@@ -49,12 +50,14 @@ public class Jogo {
         baralho.add(new Whirl());
     }
     
-    public void addJogador(Jogador jog){
-        if(jogador2 == null){
-            jogador2 = new Jogador();
-        }
-        state = state.addJogador(jogador2);
+    public int getTamMatrizX(){
+        return matrizX;
     }
+    
+    public int getTamMatrizY(){
+        return matrizY;
+    }
+    
     
     public void comecarJogo(){
         state = state.iniciarJogo();
@@ -174,13 +177,6 @@ public class Jogo {
         state = state.retomarMovimento();
     }
     
-    public void removeJogador(){
-        if(jogador2!=null){
-            jogador2 = null;
-        }
-        
-        state = new E00_Menu(this);
-    }
     
     public void setMapa(){  // Criação aleatória do mapa
         // Dados

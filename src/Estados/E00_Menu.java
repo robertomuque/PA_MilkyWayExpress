@@ -19,12 +19,6 @@ public class E00_Menu extends Estado{
     }
     
     @Override
-    public Estado addJogador(Jogador jogador){
-        jog.addJogador(jogador);
-        return new E00_Menu(jog);
-    }
-    
-    @Override
     public Estado iniciarJogo(){
         return new E01_Movimento(jog);
     }

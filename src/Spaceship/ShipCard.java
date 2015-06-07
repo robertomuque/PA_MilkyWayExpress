@@ -26,11 +26,10 @@ public class ShipCard extends Carta{
         forca[2] = null;
         forca[3] = new CuboCinza();
         forca[4] = new CuboCinza();
+        
         carga[0] = null;
         carga[1] = new CuboCinza();
         carga[2] = new CuboCinza();
-
-        
     }
     
     Jogador getJogador(){
@@ -74,26 +73,24 @@ public class ShipCard extends Carta{
         return 0;
     }
     
-    
-    
     public void adicionarCompra(Cubo material){
         for(int i=0;i<carga.length;i++){
            if(carga[i] == null){
                carga[i] = material;
                break;
            } 
-        }
-        
+        } 
     }
     
     public int getForca(){
         int x=0;
         for(int i=0;i<forca.length;i++)
         {
-            if(forca[i] == null)
-            {
-                x++;
+            if(!(forca[i] instanceof CuboCinza)){
+                 
+                      x++;
             }
+            
         }
         return x;
     }
@@ -102,11 +99,39 @@ public class ShipCard extends Carta{
         int x=0;
         for(int i=0;i<carga.length;i++)
         {
-            if(carga[i] == null)
-            {
-                x++;
+            if(!(carga[i] instanceof CuboCinza)){
+                  x++;
             }
+            
         }
         return x;
+    }
+    
+    public int getLenghtForca(){
+        return forca.length;
+    }
+    
+    public int getLenghtCarga(){
+        return carga.length;
+    }
+    
+    public boolean checkCargaCheia(){
+        int x=0;
+        for(int i=0;i<carga.length;i++){
+            if(carga[i] == null){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public Cubo getMaterialAt(int x){
+        Cubo escolha = carga[x];
+        if((escolha instanceof CuboCinza) || carga[x]==null)
+        {
+            System.out.print("1 ");
+            return null;
+        }
+        return escolha;
     }
 }

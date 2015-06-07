@@ -5,6 +5,7 @@
  */
 package UI_Grafica;
 
+import Control.Control;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -20,7 +21,7 @@ import javax.swing.JPanel;
  * @author inose_000
  */
 public class Menu extends JFrame{
-    
+    Control controller;
     CardLayout cardLayout;
     JPanel geral;
     JPanel menu;
@@ -32,16 +33,21 @@ public class Menu extends JFrame{
     JButton fechar;
     JButton bparar;
     
-    public Menu(){
+    public Menu(Control cc){
         super("MILKY WAY EXPRESS");
+        controller = cc;
+        
         setVisible(true);
         setSize(800,600);
         cardLayout = new CardLayout();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        mov = new Mov(controller);
         geral = new JPanel();
+        
         geral.setLayout(cardLayout);
         menu = new JPanel();
-        mov = new Mov();
+        
         menu.setLayout(new BorderLayout());
         menu.setBackground(Color.yellow);
         
@@ -62,7 +68,6 @@ public class Menu extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("WHOOLAY");
                 cardLayout.show(geral, "Mover");
                            }
         });
@@ -72,7 +77,7 @@ public class Menu extends JFrame{
         public void actionPerformed(ActionEvent e){
             JFrame frame = new JFrame("NAVE");
             frame.setSize(100, 100);
-            frame.add(new Nave());
+            frame.add(new Nave(controller));
             frame.setVisible(true);
         }});
     }
