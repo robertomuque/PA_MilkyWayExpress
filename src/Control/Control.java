@@ -120,8 +120,39 @@ public class Control {
         return intCarta(jogo.getCarta(y, x));
     }
     
-    public void setPositionNave(int y, int x){
-        
+    public int getDirecao(int y, int x){
+        int yy = jogo.getJogadorActivo().getToken().getPosY();
+        int xx = jogo.getJogadorActivo().getToken().getPosX();
+        if((y == yy+1) && (x == xx+1)){
+            return 3;
+        }
+        else if((y == yy+1) && (x == xx)){
+            return 2;
+        }
+        else if((y == yy+1) && (x == xx-1)){
+            return 1;
+        }
+        else if((y == yy) && (x == xx-1)){
+            return 4;
+        }
+        else if((y == yy) && (x == xx+1)){
+            return 6;
+        }
+        else if((y == yy-1) && (x == xx-1)){
+            return 7;
+        }
+        else if((y == yy-1) && (x == xx)){
+            return 8;
+        }
+        else if((y == yy-1) && (x == xx+1)){
+            return 9;
+        }
+        return 0;
+    }
+    
+    
+    public void moverNave(int direcao,int y, int x){
+        jogo.moverNave(direcao, y, x);
     }
     
 }

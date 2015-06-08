@@ -78,7 +78,10 @@ public class Mov extends JPanel{
             for(int j =0;j<x;j++){
                 botoes_lista.add(new JButton());
                 botoes_lista.get(botoes_lista.size()-1).setBackground(Color.red);
-                
+                botoes_lista.get(botoes_lista.size()-1).putClientProperty("y", i);
+                botoes_lista.get(botoes_lista.size()-1).putClientProperty("x", j);
+                botoes_lista.get(botoes_lista.size()-1).addActionListener(new CoordsListener(controller));
+                        
                 if(cc.getJogador().getToken().getPosY()==i && cc.getJogador().getToken().getPosX()==j){
                     center.add(new JButton("*"));
                 }
