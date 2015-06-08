@@ -108,8 +108,8 @@ public class Mov extends JPanel{
         public void actionPerformed(ActionEvent e){
             if(trade == null){
                 trade = new JFrame("Trade");
-                trade.setSize(380, 360);
-                trade.add(new Trade());
+                trade.setSize(450, 360);
+                trade.add(new Trade(controller));
                 trade.setResizable(false);
                 trade.setVisible(true);
             }

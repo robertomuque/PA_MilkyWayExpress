@@ -120,5 +120,8 @@ public class Control {
         return intCarta(jogo.getCarta(y, x));
     }
     
+    public void setPositionNave(int y, int x){
+        
+    }
     
 }

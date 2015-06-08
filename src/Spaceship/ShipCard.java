@@ -27,8 +27,8 @@ public class ShipCard extends Carta{
         forca[3] = new CuboCinza();
         forca[4] = new CuboCinza();
         
-        carga[0] = null;
-        carga[1] = new CuboCinza();
+        carga[0] = new Medicamento();
+        carga[1] = new Ilegal();
         carga[2] = new CuboCinza();
     }
     
