@@ -10,12 +10,14 @@ import Jogador.Jogador;
 import Planetas.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
 
 
-public class Jogo {
+public class Jogo extends Observable{
     
-    Jogador jogador1;
+   Jogador jogador1;
     Jogador jogador2;
     Jogador jogadoractivo;
     Estado state;
@@ -26,6 +28,7 @@ public class Jogo {
     Random aleatorio = new Random();
     int matrizX = 7;
     int matrizY = 7;
+    List<Observer> observers = new ArrayList<>();
     
     public Jogo(){
         jogador1 = new Jogador();
@@ -61,6 +64,7 @@ public class Jogo {
     
     public void comecarJogo(){
         state = state.iniciarJogo();
+        this.notifyObservers();
     }
     
     public void revelaMapa(){
@@ -159,6 +163,7 @@ public class Jogo {
         int xx = x;
         int yy = y;
          state = state.moverNave(jogadoractivo,tecla,yy, xx);
+         this.notifyObservers();
     }
     
     public void upgradeForca(){
@@ -468,4 +473,22 @@ public class Jogo {
     public void descobreMapa(int yy, int xx){
         
     }
+    
+    @Override
+    public void addObserver(Observer O){
+        observers.add(O);
+    }
+    
+    @Override
+    public void deleteObserver(Observer O){
+        observers.remove(O);
+    }
+    
+    @Override
+    public void notifyObservers(){
+        for(int i=0;i<observers.size();i++){
+            observers.get(i).update(this, observers.get(i));
+        }
+    }
+
 }

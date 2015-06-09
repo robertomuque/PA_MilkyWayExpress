@@ -9,24 +9,38 @@ import Cartas.Carta;
 import Cartas.EmptySpace;
 import Cartas.WormHole;
 import Cubos.Cubo;
+import Estados.Estado;
 import Jogador.Jogador;
 import Jogo.*;
 import Planetas.Planeta;
 import Planetas.PlanetaPirata;
 import UI.*;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
  * @author inose_000
  */
-public class Control {
+public class Control implements Observer{
     Jogo jogo;
     UI view;
+    Estado estado;
     
     public Control(UI vista, Jogo j){
         view = vista;
         jogo = j;
+        j.addObserver(this);
         jogo.setMapaFixo();
+        estado = getEstado();
+    }
+    
+    public void addObserver(Observer O){
+        jogo.addObserver(O);
+    }
+    
+    public Estado getEstado(){
+        return jogo.getEstado();
     }
     
     public Jogador getJogador(){
@@ -153,6 +167,16 @@ public class Control {
     
     public void moverNave(int direcao,int y, int x){
         jogo.moverNave(direcao, y, x);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+           estado = getEstado();
+           System.out.println(estado.getClass().getSimpleName());
+    }
+    
+    public void comercaJogo(){
+        jogo.comecarJogo();
     }
     
 }

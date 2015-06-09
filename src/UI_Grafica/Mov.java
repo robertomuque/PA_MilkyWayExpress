@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,7 +25,7 @@ import javax.swing.JPanel;
  *
  * @author inose_000
  */
-public class Mov extends JPanel{
+public class Mov extends JPanel implements Observer{
     Control controller;
     JPanel left;
     JPanel center;
@@ -43,6 +45,7 @@ public class Mov extends JPanel{
     public Mov(Control cc){
         setLayout(new BorderLayout());
         controller = cc;
+        controller.addObserver(this);
         x=controller.getTamMatrizX();
         y=controller.getTamMatrizY();
         //---------------------- Left
@@ -131,5 +134,43 @@ public class Mov extends JPanel{
             }
             
         }});
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        fundos.setText(""+controller.getFundos());
+        center.removeAll();
+        botoes_lista.clear();
+        setBotoes();
+        revalidate();
+        repaint();
+    }
+    
+    
+    void setBotoes(){
+        for(int i=0;i<y;i++){
+            for(int j =0;j<x;j++){
+                botoes_lista.add(new JButton());
+                botoes_lista.get(botoes_lista.size()-1).setBackground(Color.red);
+                botoes_lista.get(botoes_lista.size()-1).putClientProperty("y", i);
+                botoes_lista.get(botoes_lista.size()-1).putClientProperty("x", j);
+                botoes_lista.get(botoes_lista.size()-1).addActionListener(new CoordsListener(controller));
+                        
+                if(controller.getJogador().getToken().getPosY()==i && controller.getJogador().getToken().getPosX()==j){
+                    center.add(new JButton("*"));
+                }
+                else if(controller.getTipoCarta(i, j)==1){
+                    botoes_lista.get(botoes_lista.size()-1).setBackground(Color.GRAY);
+                    center.add(botoes_lista.get(botoes_lista.size()-1));
+                }else if(controller.getTipoCarta(i, j)==2){
+                    botoes_lista.get(botoes_lista.size()-1).setBackground(Color.MAGENTA);
+                    center.add(botoes_lista.get(botoes_lista.size()-1));
+                }else{
+                    center.add(botoes_lista.get(botoes_lista.size()-1));
+                }
+                
+                
+            }
+        }
     }
 }

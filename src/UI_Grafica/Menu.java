@@ -5,6 +5,7 @@
  */
 package UI_Grafica;
 
+import Estados.*;
 import Control.Control;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -68,17 +69,17 @@ public class Menu extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(geral, "Mover");
-                           }
+                if(controller.getEstado() instanceof E00_Menu){
+                    controller.comercaJogo();
+                    cardLayout.show(geral, "Mover");
+                }
+             }
         });
         
         fechar.addActionListener(new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e){
-            JFrame frame = new JFrame("NAVE");
-            frame.setSize(100, 100);
-            frame.add(new Nave(controller));
-            frame.setVisible(true);
+            System.exit(0);
         }});
     }
     

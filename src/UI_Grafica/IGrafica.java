@@ -9,13 +9,15 @@ import Control.Control;
 import Cubos.Cubo;
 import Jogo.Jogo;
 import UI.UI;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JFrame;
 
 /**
  *
  * @author inose_000
  */
-public class IGrafica extends UI{
+public class IGrafica extends UI implements Observer{
     Jogo jogo;
     Control controller;
     JFrame igrafica;
@@ -30,22 +32,9 @@ public class IGrafica extends UI{
         controller = new Control(this,jogo);
         igrafica = new Menu(controller);
     }
-    
-    public void moverPosicao(int y, int x){
-        controller.getJogador().getToken().setX(x);
-        controller.getJogador().getToken().setY(y);
+
+    @Override
+    public void update(Observable o, Object arg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public void upgradeForca(int x){
-        
-    }
-    
-    public void upgradeCarga(int x){
-        
-    }
-    
-    public void venderMaterial(Cubo material){
-        
-    }
-    
 }
