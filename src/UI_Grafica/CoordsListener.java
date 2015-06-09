@@ -27,9 +27,13 @@ public class CoordsListener implements ActionListener{
         JButton btn = (JButton) e.getSource();
         int y = Integer.parseInt(btn.getClientProperty("y").toString());
         int x = Integer.parseInt(btn.getClientProperty("x").toString());
-        System.out.println(y +","+ x);
-        controller.moverNave(controller.getDirecao(y, x), y, x);
-        System.out.println(""+controller.getPosY()+ " " + controller.getPosX());
+        int direcao = controller.getDirecao(y, x);
+        if(direcao != 0){
+            System.out.println(y +","+ x);
+            controller.moverNave(controller.getDirecao(y, x), y, x);
+            System.out.println(""+controller.getPosY()+ " " + controller.getPosX());
+        }
+        
     }
    
 }

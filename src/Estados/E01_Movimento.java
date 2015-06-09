@@ -61,7 +61,7 @@ public class E01_Movimento extends Estado{
             }
             else
             {
-               if(jog.getCarta(yy,xx) != null){
+               if((jog.getCarta(yy,xx) != null) && tecla!=0){
                jog.getJogadorActivo().getToken().setX(xx);
                jog.getJogadorActivo().getToken().setY(yy);
                jog.revelaMapa();
