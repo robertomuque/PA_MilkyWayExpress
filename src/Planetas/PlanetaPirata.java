@@ -18,4 +18,14 @@ public class PlanetaPirata extends Carta{
     String nome;
     Map<Cubo,Integer> precario = new HashMap<>();
     Cubo [] mercado = new Cubo[1];
+    
+    @Override 
+    public int replenish(){
+        if(mercado[0] == null){
+            mercado[0] = new Ilegal();
+        }
+        return 0;
+    }
 }
+
+

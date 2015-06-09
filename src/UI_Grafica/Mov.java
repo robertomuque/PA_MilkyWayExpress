@@ -6,6 +6,8 @@
 package UI_Grafica;
 
 import Control.Control;
+import Estados.E01_Movimento;
+import Estados.E02_Trade;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -38,6 +40,7 @@ public class Mov extends JPanel implements Observer{
     JLabel jogador;
     JLabel fundos;
     JLabel planeta;
+    JLabel planeta_info;
     List<JButton> botoes_lista = new ArrayList<>();
     int x;
     int y;
@@ -70,8 +73,16 @@ public class Mov extends JPanel implements Observer{
         jogador.setForeground(Color.cyan);
         right.add(new JLabel());
         right.add(jogador);
-        right.add(new JLabel("Nome do planeta"));
-        right.add(bmateriais = new JButton("Info"));
+        if(controller.checkIfPlaneta()){
+            planeta = new JLabel("Planeta");
+        }else{
+            planeta = new JLabel("Desconhecido");
+        }
+        
+        planeta_info = new JLabel(controller.getCartaString());
+        
+        right.add(planeta);
+        right.add(planeta_info);
         right.add(bcomprar = new JButton("Trade"));
         
         //-------------------------Center
@@ -92,26 +103,30 @@ public class Mov extends JPanel implements Observer{
     void registaListeners(){
         bcomprar.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-            if(trade == null){
-                trade = new JFrame("Trade");
-                trade.setSize(450, 360);
-                trade.add(new Trade(controller));
-                trade.setResizable(false);
-                trade.setVisible(true);
+            if( (controller.getEstado() instanceof E01_Movimento || controller.getEstado() instanceof E02_Trade)){
+                if(controller.checkIfPlaneta()){
+                   trade = new JFrame("Trade");
+                   trade.setSize(450, 360);
+                   trade.add(new Trade(controller));
+                   trade.setResizable(false);
+                   trade.setVisible(true);
+               }   
             }
+            
             
         }});
         
         nave.addActionListener(new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e){
-            if(ship == null){
+            if( (controller.getEstado() instanceof E01_Movimento || controller.getEstado() instanceof E02_Trade)){
                 ship = new JFrame("NAVE");
                 ship.setSize(600, 450);
                 ship.add(new Nave(controller));
                 ship.setResizable(false);
                 ship.setVisible(true);
             }
+                
             
         }});
     }
@@ -119,6 +134,13 @@ public class Mov extends JPanel implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         fundos.setText(""+controller.getFundos());
+        if(controller.checkIfPlaneta()){
+            planeta.setText(("Planeta"));
+        }else{
+            planeta.setText("Desconhecido");
+        }
+        
+        planeta_info.setText(controller.getCartaString());
         center.removeAll();
         botoes_lista.clear();
         setBotoes();

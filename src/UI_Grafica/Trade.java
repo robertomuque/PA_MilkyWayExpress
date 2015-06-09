@@ -36,8 +36,9 @@ public class Trade extends JPanel{
         controller = cc;
         setLayout(new BorderLayout());
         center = new PlanetaImg();
-        center.setLayout(new BoxLayout(center,BoxLayout.Y_AXIS));
+        center.setLayout(null);
         center.setMaximumSize(new Dimension(360,360));
+        setBotoesTrade();
         //center.setPreferredSize(null);
         east = new JPanel();
         east.setLayout(new GridLayout(14,1));
@@ -56,6 +57,22 @@ public class Trade extends JPanel{
         
         for(int i = 0;i<venda.size(); i++){
             east.add(venda.get(i));
+        }
+        
+    }
+    
+    
+    public void setBotoesTrade(){
+        if(controller.getTipoCarta(controller.getPosY(), controller.getPosX()) == 1){
+          material1 = new JButton("M1");
+        material1.setBounds(110, 270, 50, 50);
+         material2 = new JButton("M2");
+        material2.setBounds(170, 270, 50, 50);
+        
+        center.add(material1);
+        center.add(material2);  
+        }else if(controller.getTipoCarta(controller.getPosY(), controller.getPosX()) == 2){
+            
         }
         
     }

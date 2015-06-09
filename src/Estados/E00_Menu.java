@@ -20,6 +20,7 @@ public class E00_Menu extends Estado{
     
     @Override
     public Estado iniciarJogo(){
+        jog.replenish();
         return new E01_Movimento(jog);
     }
 }

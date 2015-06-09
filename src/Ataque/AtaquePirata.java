@@ -5,6 +5,8 @@
  */
 package Ataque;
 
+import Jogo.Jogo;
+
 /**
  *
  * @author inose_000
@@ -13,9 +15,9 @@ public class AtaquePirata {
     int forca_atq;
     int forca_def;
     
-    public AtaquePirata(){
-        forca_atq = (int)(Math.random()*10)+1;
-        forca_def = (int)(Math.random()*10)+1;
+    public AtaquePirata(int x){
+        forca_atq = (int)(Math.random()*6)+1;
+        forca_def = (int)(Math.random()*x)+1;
         
     }
     

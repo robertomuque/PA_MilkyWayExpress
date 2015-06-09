@@ -55,6 +55,10 @@ public class Control implements Observer{
         return jogo.getJogadorActivo().getToken().getPosY();
     }
     
+    public String getCartaString(){
+        return jogo.getCartaActual();
+    }
+    
     public Carta getCartaActual(int y, int x){
         return jogo.getCarta(y, x);
     }
@@ -103,8 +107,8 @@ public class Control implements Observer{
         
     }
     
-    public void getCartaActual(){
-        jogo.getCartaActual();
+    public boolean checkIfPlaneta(){
+       return jogo.checkIfPlaneta();
     }
     
     public String getMaterialAt(int x){
@@ -129,6 +133,8 @@ public class Control implements Observer{
         }
         return 0;
     }
+    
+    
     
     public int getTipoCarta(int y, int x){
         return intCarta(jogo.getCarta(y, x));
@@ -172,7 +178,6 @@ public class Control implements Observer{
     @Override
     public void update(Observable o, Object arg) {
            estado = getEstado();
-           System.out.println(estado.getClass().getSimpleName());
     }
     
     public void comercaJogo(){

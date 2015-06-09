@@ -3,7 +3,6 @@ package Jogo;
 
 import Ataque.AtaquePirata;
 import Cartas.*;
-import Cubos.*;
 import Estados.*;
 import Estados.Estado;
 import Jogador.Jogador;
@@ -22,7 +21,6 @@ public class Jogo extends Observable{
     Jogador jogadoractivo;
     Estado state;
     List<Carta> baralho = new ArrayList<>();
-    List<Cubo> banco = new ArrayList<>();
     Carta [][] mapa = new Carta[7][7];
     List<AtaquePirata> ataque = new ArrayList<>();
     Random aleatorio = new Random();
@@ -414,8 +412,7 @@ public class Jogo extends Observable{
     }
     
     public void sofreAtaque(){
-        ataque.add(new AtaquePirata());
-        ataque.add(new AtaquePirata());
+        ataque.add(new AtaquePirata(jogadoractivo.getNave().getForca()));
     }
     
     public AtaquePirata getAtaque1(){
@@ -454,6 +451,18 @@ public class Jogo extends Observable{
         return mapa[y][x];
     }
     
+    public boolean checkIfPlaneta(){
+        if(mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()] instanceof Planeta){
+          return true;  
+        }
+        else if(mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()] instanceof PlanetaPirata){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+    
     public String getCartaActual(){
         if(mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()] != null){
             return mapa[jogadoractivo.getToken().getPosY()][jogadoractivo.getToken().getPosX()].getClass().getSimpleName(); 
@@ -488,6 +497,32 @@ public class Jogo extends Observable{
     public void notifyObservers(){
         for(int i=0;i<observers.size();i++){
             observers.get(i).update(this, observers.get(i));
+        }
+    }
+    
+    public void replenish(){
+        ataque.clear();
+        int ataques = 0;
+        for(int i=0;i<matrizY;i++){
+            for(int j=0;j<matrizX;j++){
+                if(mapa[i][j] != null){
+                   ataques = ataques + mapa[i][j].replenish(); 
+                }
+                
+            }
+        }
+        
+        System.out.println("" + ataques);
+        if(!(state instanceof E00_Menu)){
+            sofreAtaques(ataques);
+        }
+    }
+    
+    
+    public void sofreAtaques(int ataques){
+        for(int i=0;i<ataques;i++){
+            this.ataque.add(new AtaquePirata(getJogadorActivo().getNave().getForca()));
+            this.jogadoractivo.fazCompra(ataque.get(i).getResgate());
         }
     }
 

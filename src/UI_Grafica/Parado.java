@@ -13,4 +13,6 @@ import javax.swing.JFrame;
  */
 public class Parado extends JFrame{
     
+    
+    
 }

@@ -29,9 +29,7 @@ public class CoordsListener implements ActionListener{
         int x = Integer.parseInt(btn.getClientProperty("x").toString());
         int direcao = controller.getDirecao(y, x);
         if(direcao != 0){
-            System.out.println(y +","+ x);
             controller.moverNave(controller.getDirecao(y, x));
-            System.out.println(""+controller.getPosY()+ " " + controller.getPosX());
         }
         
     }

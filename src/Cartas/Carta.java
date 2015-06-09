@@ -20,4 +20,8 @@ public class Carta{
    public boolean getVisible(){
        return visible;
    }
+   
+   public int replenish(){
+       return 0;
+   }
 }
