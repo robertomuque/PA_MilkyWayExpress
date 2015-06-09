@@ -33,7 +33,13 @@ public class Jogador {
     public void fazCompra(int x){
         for(int i=0;i<x;i++)
         {
-            fundos.remove(fundos.size()-1);
+            if(!fundos.isEmpty()){
+                fundos.remove(fundos.size()-1);
+            }
+            else
+            {
+                return;
+            }
         }
     }
     

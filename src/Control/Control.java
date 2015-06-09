@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Ataque.AtaquePirata;
 import Cartas.Carta;
 import Cartas.EmptySpace;
 import Cartas.WormHole;
@@ -15,6 +16,8 @@ import Jogo.*;
 import Planetas.Planeta;
 import Planetas.PlanetaPirata;
 import UI.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -26,6 +29,7 @@ public class Control implements Observer{
     Jogo jogo;
     UI view;
     Estado estado;
+    List<AtaquePirata> ataques = new ArrayList<>();
     
     public Control(UI vista, Jogo j){
         view = vista;
@@ -178,10 +182,19 @@ public class Control implements Observer{
     @Override
     public void update(Observable o, Object arg) {
            estado = getEstado();
+           updateAtaques();
     }
     
     public void comercaJogo(){
         jogo.comecarJogo();
+    }
+    
+    public void updateAtaques(){
+        ataques = jogo.getAtaques();
+    }
+    
+    public List getAtaques(){
+        return ataques;
     }
     
 }

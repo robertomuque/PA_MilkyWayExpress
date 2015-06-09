@@ -30,7 +30,13 @@ public class AtaquePirata {
     }
     
     public int getResgate(){
-        return (forca_atq - forca_def);
+        if(forca_atq - forca_def>0){
+            return (forca_atq - forca_def);
+        }
+        else{
+            return 0;
+        }
+        
     }
             
 }

@@ -511,13 +511,14 @@ public class Jogo extends Observable{
                 
             }
         }
-        
-        System.out.println("" + ataques);
         if(!(state instanceof E00_Menu)){
             sofreAtaques(ataques);
         }
     }
     
+    public List getAtaques(){
+        return ataque;
+    }
     
     public void sofreAtaques(int ataques){
         for(int i=0;i<ataques;i++){
