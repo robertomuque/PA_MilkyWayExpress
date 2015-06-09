@@ -30,7 +30,7 @@ public class CoordsListener implements ActionListener{
         int direcao = controller.getDirecao(y, x);
         if(direcao != 0){
             System.out.println(y +","+ x);
-            controller.moverNave(controller.getDirecao(y, x), y, x);
+            controller.moverNave(controller.getDirecao(y, x));
             System.out.println(""+controller.getPosY()+ " " + controller.getPosX());
         }
         

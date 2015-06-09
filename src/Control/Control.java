@@ -165,8 +165,8 @@ public class Control implements Observer{
     }
     
     
-    public void moverNave(int direcao,int y, int x){
-        jogo.moverNave(direcao, y, x);
+    public void moverNave(int direcao){
+        jogo.moverNave(direcao, jogo.getJogadorActivo().getToken().getPosY(), jogo.getJogadorActivo().getToken().getPosX());
     }
 
     @Override
