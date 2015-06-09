@@ -77,30 +77,10 @@ public class Mov extends JPanel implements Observer{
         //-------------------------Center
         center = new JPanel();
         center.setLayout(new GridLayout(y,x));
-        for(int i=0;i<y;i++){
-            for(int j =0;j<x;j++){
-                botoes_lista.add(new JButton());
-                botoes_lista.get(botoes_lista.size()-1).setBackground(Color.red);
-                botoes_lista.get(botoes_lista.size()-1).putClientProperty("y", i);
-                botoes_lista.get(botoes_lista.size()-1).putClientProperty("x", j);
-                botoes_lista.get(botoes_lista.size()-1).addActionListener(new CoordsListener(controller));
-                        
-                if(cc.getJogador().getToken().getPosY()==i && cc.getJogador().getToken().getPosX()==j){
-                    center.add(new JButton("*"));
-                }
-                else if(cc.getTipoCarta(i, j)==1){
-                    botoes_lista.get(botoes_lista.size()-1).setBackground(Color.GRAY);
-                    center.add(botoes_lista.get(botoes_lista.size()-1));
-                }else if(cc.getTipoCarta(i, j)==2){
-                    botoes_lista.get(botoes_lista.size()-1).setBackground(Color.MAGENTA);
-                    center.add(botoes_lista.get(botoes_lista.size()-1));
-                }else{
-                    center.add(botoes_lista.get(botoes_lista.size()-1));
-                }
-                
-                
-            }
-        }
+        setBotoes();
+        //---------------------------------
+        
+        
         left.setBackground(Color.blue);
         right.setBackground(Color.blue);
         registaListeners();
@@ -164,6 +144,12 @@ public class Mov extends JPanel implements Observer{
                     center.add(botoes_lista.get(botoes_lista.size()-1));
                 }else if(controller.getTipoCarta(i, j)==2){
                     botoes_lista.get(botoes_lista.size()-1).setBackground(Color.MAGENTA);
+                    center.add(botoes_lista.get(botoes_lista.size()-1));
+                }else if(controller.getTipoCarta(i, j)==3){
+                    botoes_lista.get(botoes_lista.size()-1).setBackground(Color.BLACK);
+                    center.add(botoes_lista.get(botoes_lista.size()-1));
+                }else if(controller.getTipoCarta(i, j)==4){
+                    botoes_lista.get(botoes_lista.size()-1).setBackground(Color.WHITE);
                     center.add(botoes_lista.get(botoes_lista.size()-1));
                 }else{
                     center.add(botoes_lista.get(botoes_lista.size()-1));
